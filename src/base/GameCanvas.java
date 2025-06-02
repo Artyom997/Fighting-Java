@@ -143,7 +143,6 @@ public class GameCanvas extends JPanel  {
 		Shape shape = shapes.get(id);
 		if (shape != null) {
 			shape.moveToLocation(cordX, cordY);
-			;
 			this.repaint();
 		}
 	}

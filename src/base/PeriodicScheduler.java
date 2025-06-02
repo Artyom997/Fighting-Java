@@ -7,7 +7,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 
 public class PeriodicScheduler {
-	public static int periodicInterval = 100;//change this to change the speed of the game
+	public static int periodicInterval = 300;//change this to change the speed of the game
 	private PeriodicLoop periodicLoop;
 	private final ScheduledExecutorService scheduler =
 			Executors.newScheduledThreadPool(1);

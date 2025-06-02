@@ -6,7 +6,7 @@ import base.Game;
 import base.GameCanvas;
 import base.GameContent;
 import base.GameDashboard;
-//import my_game.Pokimon;
+import my_game.Pokimon;
 import my_ui_elements.AddButton;
 import my_ui_elements.ChangeButton;
 import my_ui_elements.DirectionCombo;
@@ -30,7 +30,8 @@ public class MyGame extends Game {
 		//Initialize the character and add it to the canvas
 		//the character is initialized inside MyContent
 		MyCharacter1 ryu = content.character();
-
+		Pokimon pokimon = content.pokimon();
+		ryu.addToCanvas();
 	}
 	
 	@Override

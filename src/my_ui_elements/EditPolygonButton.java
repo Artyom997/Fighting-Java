@@ -18,11 +18,11 @@ public class EditPolygonButton extends GameButton{
 		super.action();
 		
 		MyContent content = (MyContent) Game.Content();
-		if (content.polygon().isEditMode()) {
-			content.polygon().exitEditMode();
-		} else {
-			content.polygon().enterEditMode();
-		}
+		//if (content.polygon().isEditMode()) {
+		//	content.polygon().exitEditMode();
+		//} else {
+		//	content.polygon().enterEditMode();
+		//}
 	}
 
 }

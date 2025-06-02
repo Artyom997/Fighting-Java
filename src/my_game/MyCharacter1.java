@@ -16,10 +16,10 @@ import shapes.Image;
 public class MyCharacter1 implements ShapeListener {
 	
 	public enum Direction{
-		RIGHT (10,0),
+		RIGHT(10,0),
 		LEFT(-10,0),
-		UP (0,-10),
-		DOWN(0,10),
+		//UP(0,-10),
+		//DOWN(0,10),
 		STOP(0,0);
 		
 		private final int xVec, yVec;
@@ -34,21 +34,42 @@ public class MyCharacter1 implements ShapeListener {
 			return yVec;
 		}
 	}
-	private ExcelTable ryuTable; 
+	public enum Command{
+		PUNCH("PUNCH"),
+		KICK("KICK"),
+		BLOCK("BLOCK"),
+		WIN("WIN"),
+		IDLE("IDLE");
+		
+		private final String command;
+		private Command(String command) {
+			this.command = command;
+		}
+		public String getCommand() {
+			return command;
+		}
+	}
+	private ExcelTable ryuTable;
 	private ScreenPoint location;
-	
+
 	private Direction directionPolicy = Direction.STOP;
 	private Direction direction = Direction.STOP;
-	public int speed = 5;//change this to change the speed of the character
+	private Command commandPolicy = Command.IDLE;
+	private Command command = Command.IDLE;
+	public int speed = 1;//change this to change the speed of the character
 
 	private String[] images = {
-		"resources/ryu - haduken - right.png",
-	 	"resources/ryu - standing - right.png",
-		"resources/ryu - kick - right.png"
+		"resources/gifs/ryu-standing.gif",
+		"resources/gifs/ryu-block.gif",
+		"resources/gifs/ryu-mp.gif",
+		"resources/gifs/ryu-mk.gif",
+		"resources/gifs/ryu-hurricane-ts.gif",
+		"resources/gifs/ryu-walkf.gif",
+		"resources/gifs/ryu-walkb.gif"
 	};
 
-	private final int[] imageWidth = {420,460, 450};//The following two arrays hold the widths and heights of the different images.
-	private final int[] imageHeight = {400,470, 450};//
+	private final int[] imageWidth = {78, 78, 127, 154, 159, 112, 112};//The following two arrays hold the widths and heights of the different images.
+	private final int[] imageHeight = {111, 106, 105, 108, 140, 113, 113};//need to be changed according to each gif
 	private int locationIndex = 0;
 	private int imageIndex = 0;
 	private String imageID = "Ryu";
@@ -59,7 +80,7 @@ public class MyCharacter1 implements ShapeListener {
 	public MyCharacter1() {
 		ryuTable = Game.excelDB().createTableFromExcel("ryuMoves");
 		ryuTable.deleteAllRows();
-		setLocation(new ScreenPoint(200, 250));
+		setLocation(new ScreenPoint(200, 330));
 	}
 
 	public void addToCanvas() {
@@ -82,7 +103,12 @@ public class MyCharacter1 implements ShapeListener {
 	public void setDirectionPolicy(Direction direction) {
 		directionPolicy = direction;
 	}
-	
+	public void setCommandPolicy(Command command) {
+		commandPolicy = command;
+	}
+	public void getCommandPolicy(Command command) {
+		this.command = commandPolicy;
+	}
 	public Direction getDirection() {
 		return direction;
 	}
@@ -106,7 +132,7 @@ public class MyCharacter1 implements ShapeListener {
 		this.imageIndex = 0;
 		Game.UI().canvas().changeImage(imageID, getImageName(), getImageWidth(), getImageHeight());
 	}
-	public void changeImage() {//David+Artyom
+	public void changeImage() {
 		this.imageIndex ++;
 		if (this.imageIndex >= this.images.length) {
 			this.imageIndex = 0;
@@ -128,26 +154,43 @@ public class MyCharacter1 implements ShapeListener {
 	private int getImageHeight() {
 		return imageHeight[imageIndex];
 	}
-	public void move() {
-		MyPolygon polygon = ((MyContent) Game.Content()).polygon();
+	public void move(Direction direction) {
 		if (isMoving) {
 			// Move according to policy
-			ScreenPoint desired = new ScreenPoint(location.x + speed*directionPolicy.xVec(), location.y + speed*directionPolicy.yVec());
-			// if move is possible, i.e., maze does not block
-			direction = directionPolicy;
+			this.direction = direction;
+			ScreenPoint desired = new ScreenPoint(location.x + speed*direction.xVec(), location.y + speed*direction.yVec());
 			location.x = desired.x;
 			location.y = desired.y;
-			// After changing the pokimon self location, move also its image in the canvas accordingly.
-			Game.UI().canvas().moveShapeToLocation(imageID, location.x, location.y);
-			try {
-				ryuTable.insertRow(new String[] {PeriodicLoop.elapsedTime() + "", location.x + "", location.y +"", direction.toString()});
-				//Game.excelDB().commit();
-			} catch (Exception e) {
-				e.printStackTrace();
-				System.out.println("Error inserting new line to pokimon table");			
+			switch (direction) {
+				case LEFT: this.imageIndex = 6; break;
+				case RIGHT:  this.imageIndex = 5; break;
+				case STOP: this.imageIndex = 0; break;
 			}
+			Game.UI().canvas().moveShapeToLocation(imageID, location.x, location.y);
+			Game.UI().canvas().changeImage(imageID, getImageName(), getImageWidth(), getImageHeight());
+			
+			//try {
+			//	ryuTable.insertRow(new String[] {PeriodicLoop.elapsedTime() + "", location.x + "", location.y +"", direction.toString()});
+			//	//Game.excelDB().commit();
+			//} catch (Exception e) {
+			//	e.printStackTrace();
+			//	System.out.println("Error inserting new line to pokimon table");			
+			//}
 		}
 	}
+	public void command(Command command) {
+		this.command = command;
+		switch (command) {
+			case PUNCH: this.imageIndex = 2; break;
+			case KICK:  this.imageIndex = 3; break;
+			case BLOCK: this.imageIndex = 1; break;
+			case WIN:   this.imageIndex = 4; break;
+			case IDLE:  this.imageIndex = 0; break;
+		}
+		Game.UI().canvas().changeImage(imageID, getImageName(), getImageWidth(), getImageHeight());
+	}
+
+	
 	//TODO
 	//Add setters, getters and other methods that you need for your character
 	public void shapeMoved (String shapeID, int dx, int dy){}

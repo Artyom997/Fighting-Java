@@ -170,10 +170,10 @@ public class Pokimon implements ShapeListener, Intersectable {
 	}
 
 	public void move() {
-		MyPolygon polygon = ((MyContent) Game.Content()).polygon();
-		if (IntersectionAlgorithm.areIntersecting(this, polygon)) {
-			turn180();
-		}
+		//MyPolygon polygon = ((MyContent) Game.Content()).polygon();
+		//if (IntersectionAlgorithm.areIntersecting(this, polygon)) {
+		//	turn180();
+		//}
 		if (isMoving) {
 			// Move according to policy
 			ScreenPoint desired = new ScreenPoint(location.x + directionPolicy.xVec(), location.y + directionPolicy.yVec());
