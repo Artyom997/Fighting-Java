@@ -6,7 +6,7 @@ import ui_elements.GameButton;
 import my_game.MyCharacter1;
 
 public class AddButton extends GameButton{
-	private MyCharacter1 ryu = new MyCharacter1();
+	private MyCharacter1 ryu = new MyCharacter1(2);
 
 
 	public AddButton(String id, String name, int posX, int posY) {
@@ -21,7 +21,7 @@ public class AddButton extends GameButton{
 		
 		MyContent content = (MyContent) Game.Content();
 		//TODO
-		content.addCharacter();
+		content.addCharacter(1);//Change to something generic
 		//Add your character to your game content
 
 	}

@@ -29,9 +29,11 @@ public class MyGame extends Game {
 
 		//Initialize the character and add it to the canvas
 		//the character is initialized inside MyContent
-		MyCharacter1 ryu = content.character();
-		Pokimon pokimon = content.pokimon();
-		ryu.addToCanvas();
+		MyCharacter1 char1 = content.character(1);
+		MyCharacter1 char2 = content.character(2);
+		//Pokimon pokimon = content.pokimon();
+		char1.addToCanvas(1);
+		char2.addToCanvas(2);
 	}
 	
 	@Override

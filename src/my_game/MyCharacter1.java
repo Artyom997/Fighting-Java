@@ -50,7 +50,8 @@ public class MyCharacter1 implements ShapeListener {
 		}
 	}
 	private ExcelTable ryuTable;
-	private ScreenPoint location;
+	private ScreenPoint location1;
+	private ScreenPoint location2;
 
 	private Direction directionPolicy = Direction.STOP;
 	private Direction direction = Direction.STOP;
@@ -58,6 +59,7 @@ public class MyCharacter1 implements ShapeListener {
 	private Command command = Command.IDLE;
 	public int speed = 1;//change this to change the speed of the character
 
+	
 	private String[] images = {
 		"resources/gifs/ryu-standing.gif",
 		"resources/gifs/ryu-block.gif",
@@ -77,23 +79,34 @@ public class MyCharacter1 implements ShapeListener {
 	private int rotation = 0;	// In degrees
 
 
-	public MyCharacter1() {
+	public MyCharacter1(int index) {
+		this.imageID = "char" + index;
 		ryuTable = Game.excelDB().createTableFromExcel("ryuMoves");
 		ryuTable.deleteAllRows();
-		setLocation(new ScreenPoint(200, 330));
+		if (index == 1) {setLocation(1, new ScreenPoint(200, 330));}
+		else setLocation(2, new ScreenPoint(500, 330));
 	}
 
-	public void addToCanvas() {
+	public void addToCanvas(int index) {
 		GameCanvas canvas = Game.UI().canvas();
-		Image image = new Image(getImageID(), getImageName(), getImageWidth(),getImageHeight(), location.x, location.y);
+		Image image;
+		if (index == 1) {
+			image = new Image(getImageID(), getImageName(), getImageWidth(),getImageHeight(), location1.x, location1.y);
+		} else
+			image = new Image(getImageID(), getImageName(), getImageWidth(),getImageHeight(), location2.x, location2.y);
+		
 		image.setShapeListener(this);
 		image.setzOrder(3);
 		canvas.addShape(image);
 	}
-
-	public void moveLocation(int dx, int dy) {
-		this.location.x += dx;
-		this.location.y += dy;
+	public void moveLocation(int index, int dx, int dy) {
+		if (index == 1) {
+			this.location1.x += dx;
+			this.location1.y += dy;
+		} else if (index == 2) {
+			this.location2.x += dx;
+			this.location2.y += dy;
+		}
 	}
 
 	public void setMoving(boolean isMoving) {
@@ -117,12 +130,18 @@ public class MyCharacter1 implements ShapeListener {
 		return directionPolicy;
 	}
 	
-	public ScreenPoint getLocation() {
-		return this.location;
+	public ScreenPoint getLocation(int index) {
+		if (index == 1) {
+			return this.location1;
+		} else
+			return this.location2;
 	}
 	
-	public void setLocation(ScreenPoint location) {
-		this.location = location;
+	public void setLocation(int index, ScreenPoint location) {
+		if (index == 1) {
+			this.location1 = location;
+		} else 
+			this.location2 = location;
 	}
 	
 	public void setImageID(String id) {
@@ -154,10 +173,11 @@ public class MyCharacter1 implements ShapeListener {
 	private int getImageHeight() {
 		return imageHeight[imageIndex];
 	}
-	public void move(Direction direction) {
+	public void move(int index, Direction direction) {
 		if (isMoving) {
 			// Move according to policy
 			this.direction = direction;
+			ScreenPoint location = getLocation(index);
 			ScreenPoint desired = new ScreenPoint(location.x + speed*direction.xVec(), location.y + speed*direction.yVec());
 			location.x = desired.x;
 			location.y = desired.y;

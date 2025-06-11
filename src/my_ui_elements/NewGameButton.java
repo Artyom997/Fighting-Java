@@ -6,7 +6,7 @@ import ui_elements.GameButton;
 import my_game.MyCharacter1;
 
 public class NewGameButton extends GameButton{
-	private MyCharacter1 ryu = new MyCharacter1();
+	private MyCharacter1 ryu = new MyCharacter1(2);
 	//###class not ready yet###
 
 	public NewGameButton(String id, String name, int posX, int posY) {

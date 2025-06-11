@@ -30,7 +30,7 @@ public class IntersectionAlgorithm {
 
         return areIntersecting(firstObjectPolygon, secondObjectPolygon);
     }
-
+ 
     private static boolean areIntersecting(Shape firstShape, Shape secondShape) {
         Area intersection = new Area(firstShape);
         intersection.intersect(new Area(secondShape));

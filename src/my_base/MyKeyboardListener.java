@@ -22,24 +22,24 @@ public class MyKeyboardListener extends KeyboardListener{
 	public void commandKeyPressed(Command command) {
 		switch (command) {
 		  case PUNCH:
-			  myContent.character().setCommandPolicy(MyCharacter1.Command.PUNCH);
-			  myContent.character().command(command);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.PUNCH);
+			  myContent.character(1).command(command);
 			  break;
 		  case KICK:
-			  myContent.character().setCommandPolicy(MyCharacter1.Command.KICK);
-			  myContent.character().command(command);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.KICK);
+			  myContent.character(1).command(command);
 			  break;
 		  case BLOCK:
-			  myContent.character().setCommandPolicy(MyCharacter1.Command.BLOCK);
-			  myContent.character().command(command);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.BLOCK);
+			  myContent.character(1).command(command);
 			  break;
 		  case WIN:
-			  myContent.character().setCommandPolicy(MyCharacter1.Command.WIN);
-			  myContent.character().command(command);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.WIN);
+			  myContent.character(1).command(command);
 			  break;
 		  default:
-			  myContent.character().setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character().command(command);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(1).command(command);
 			  break;
 		}
 	}
@@ -47,20 +47,20 @@ public class MyKeyboardListener extends KeyboardListener{
 	public void commandKeyReleased(Command command) {
 		switch (command) {
 		  case PUNCH:
-			  myContent.character().setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character().command(MyCharacter1.Command.IDLE);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(1).command(MyCharacter1.Command.IDLE);
 			  break;
 		  case KICK:
-			  myContent.character().setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character().command(MyCharacter1.Command.IDLE);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(1).command(MyCharacter1.Command.IDLE);
 			  break;
 		  case BLOCK:
-			  myContent.character().setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character().command(MyCharacter1.Command.IDLE);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(1).command(MyCharacter1.Command.IDLE);
 			  break;
 		  case WIN:
-			  myContent.character().setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character().command(MyCharacter1.Command.IDLE);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(1).command(MyCharacter1.Command.IDLE);
 			  break;
 		  default:
 		}
@@ -69,13 +69,13 @@ public class MyKeyboardListener extends KeyboardListener{
 	public void directionalKeyPressed(Direction direction) {
 		switch (direction) {
 		  case RIGHT:
-			  myContent.character().setDirectionPolicy(MyCharacter1.Direction.RIGHT);
-			  myContent.character().move(MyCharacter1.Direction.RIGHT);
+			  myContent.character(1).setDirectionPolicy(MyCharacter1.Direction.RIGHT);
+			  myContent.character(1).move(1,MyCharacter1.Direction.RIGHT);
 			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Right");
 			  break;
 		  case LEFT:
-			  myContent.character().setDirectionPolicy(MyCharacter1.Direction.LEFT);
-			  myContent.character().move(MyCharacter1.Direction.LEFT);
+			  myContent.character(1).setDirectionPolicy(MyCharacter1.Direction.LEFT);
+			  myContent.character(1).move(1,MyCharacter1.Direction.LEFT);
 			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
 			  break;
 		}
@@ -84,13 +84,13 @@ public class MyKeyboardListener extends KeyboardListener{
 	public void directionalKeyReleased(Direction direction) {
 		switch (direction) {
 		  case RIGHT:
-			  myContent.character().setDirectionPolicy(MyCharacter1.Direction.STOP);
-			  myContent.character().move(MyCharacter1.Direction.STOP);
+			  myContent.character(1).setDirectionPolicy(MyCharacter1.Direction.STOP);
+			  myContent.character(1).move(1,MyCharacter1.Direction.STOP);
 			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Right");
 			  break;
 		  case LEFT:
-			  myContent.character().setDirectionPolicy(MyCharacter1.Direction.STOP);
-			  myContent.character().move(MyCharacter1.Direction.STOP);
+			  myContent.character(1).setDirectionPolicy(MyCharacter1.Direction.STOP);
+			  myContent.character(1).move(1,MyCharacter1.Direction.STOP);
 			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
 			  break;
 		}

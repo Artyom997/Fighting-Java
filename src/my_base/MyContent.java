@@ -14,6 +14,7 @@ public class MyContent extends GameContent{
 	private Pokimon pokimon;
 	private MyPolygon myPolygon;
 	private MyCharacter1 ryu;
+	private MyCharacter1 ermak;
 	
 	
 	//TODO
@@ -26,19 +27,25 @@ public class MyContent extends GameContent{
 		//Create an instance of your character and set its properties with
 		//initial values
 		
-		ryu = new MyCharacter1();
+		ryu = new MyCharacter1(1);
+		ermak = new MyCharacter1(2);
 		//ryu.initImage();
 	}	
 	
 	public Pokimon pokimon() {
 		return pokimon;
 	}
-	public MyCharacter1 character() {
-		return ryu;
+	public MyCharacter1 character(int index) {
+		if (index == 1) {
+			return ryu;
+		} 
+		else
+			return ermak;
+		
 	}
 
-	public void addCharacter() { //AVI + DAVID
-		ryu.addToCanvas();
+	public void addCharacter(int index) { //AVI + DAVID
+		ryu.addToCanvas(index);
 	}
 	public void changeCharacter() {
 		//TODO
