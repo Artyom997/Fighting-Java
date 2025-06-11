@@ -14,6 +14,7 @@ import my_ui_elements.EndButton;
 import my_ui_elements.MusicButton;
 import my_ui_elements.NewGameButton;
 import my_game.MyCharacter1;
+import my_base.InVicinity;
 
 public class MyGame extends Game {
 	

@@ -2,10 +2,11 @@ package my_game;
 
 import base.Game;
 import base.GameCanvas;
-import base.IntersectionAlgorithm;
 import base.PeriodicLoop;
 import ui_elements.ScreenPoint;
 import base.ShapeListener;
+import base.IntersectionAlgorithm;
+import my_base.InVicinity;
 import my_base.MyContent;
 import DB.ExcelTable;
 import shapes.Image;
@@ -76,6 +77,7 @@ public class MyCharacter1 implements ShapeListener {
 	private int imageIndex = 0;
 	private String imageID = "Ryu";
 	private boolean isMoving = true;
+	
 	private int rotation = 0;	// In degrees
 
 

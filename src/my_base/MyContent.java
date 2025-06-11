@@ -9,6 +9,7 @@ import base.GameContent;
 import base.GameUI;
 import my_game.MyCharacter1;
 import my_game.MyPolygon;
+import my_base.InVicinity;
 
 public class MyContent extends GameContent{
 	private Pokimon pokimon;

@@ -2,12 +2,14 @@ package my_base;
 
 import base.Game;
 import base.GameCanvas;
+import base.GameDashboard;
 import base.PeriodicLoop;
 import my_game.MyCharacter1;
 import my_base.MyContent; 
+import my_base.InVicinity;
 
 public class MyPeriodicLoop extends PeriodicLoop {
-
+	private InVicinity melee = new InVicinity();
 	private MyContent content;
 
 	public void setContent(MyContent content) {
@@ -30,8 +32,9 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		//exists and if not, we return without doing anything.
 		if (ryu == null|| ermak == null) {
 			return;
+		}
+		if (melee.inMelee(ryu.getLocation(1), ermak.getLocation(2))) {
+			System.out.println("In Melee Range!!!!!!!!!!!!!!!!!!!!!!!!!");
+		} 
 	}
-
-
-}
 }
