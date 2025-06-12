@@ -121,8 +121,8 @@ public class MyCharacter1 implements ShapeListener {
 	public void setCommandPolicy(MyCommand command) {
 		commandPolicy = command;
 	}
-	public void getCommandPolicy(MyCommand command) {
-		this.command = commandPolicy;
+	public MyCommand getCommandPolicy() {
+		return commandPolicy;
 	}
 	public MyDirection getDirection() {
 		return direction;

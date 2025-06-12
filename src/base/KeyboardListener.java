@@ -4,9 +4,6 @@ package base;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import my_game.MyCharacter1.Command;
-import my_game.MyCharacter1.Direction;
-
 public class KeyboardListener {
 	public enum Direction {
 		RIGHT, LEFT, UP, DOWN, STOP,
@@ -105,7 +102,7 @@ public class KeyboardListener {
 			//case KeyEvent.VK_DOWN:
 			//	directionalKeyReleased(Direction.DOWN);
 			//	break;
-				case KeyEvent.VK_NUMPAD1:
+			case KeyEvent.VK_NUMPAD1:
 				commandKeyReleased(Command.PUNCH);
 				break;
 			case KeyEvent.VK_NUMPAD2:
@@ -120,20 +117,26 @@ public class KeyboardListener {
 			case KeyEvent.VK_NUMPAD4:
 				commandKeyReleased(Command.IDLE);
 				break;
+			case KeyEvent.VK_D:
+				directionalKeyReleased(Direction.RIGHT2);
+				break;
+			case KeyEvent.VK_A:
+				directionalKeyReleased(Direction.LEFT2);
+				break;
 			case KeyEvent.VK_1:
-				commandKeyPressed(Command.PUNCH2);
+				commandKeyReleased(Command.PUNCH2);
 				break;
 			case KeyEvent.VK_2:
-				commandKeyPressed(Command.KICK2);
+				commandKeyReleased(Command.KICK2);
 				break;
 			case KeyEvent.VK_3:
-				commandKeyPressed(Command.BLOCK2);
+				commandKeyReleased(Command.BLOCK2);
 				break;
 			case KeyEvent.VK_4:
-				commandKeyPressed(Command.WIN2);
+				commandKeyReleased(Command.WIN2);
 				break;
 			case KeyEvent.VK_S:
-				commandKeyPressed(Command.IDLE2);
+				commandKeyReleased(Command.IDLE2);
 				break;
 			default:
 			}
