@@ -56,6 +56,34 @@ public class KeyboardListener {
 			case KeyEvent.VK_NUMPAD4:
 				commandKeyPressed(Command.IDLE);
 				break;
+				//character 2 moves and commands
+			case KeyEvent.VK_D:
+				directionalKeyPressed(Direction.RIGHT2);
+				break;
+			case KeyEvent.VK_A:
+				directionalKeyPressed(Direction.LEFT2);
+				break;
+			case KeyEvent.VK_W:
+				directionalKeyPressed(Direction.UP2);
+				break;
+			case KeyEvent.VK_X:
+				directionalKeyPressed(Direction.DOWN2);
+				break;
+			case KeyEvent.VK_1:
+				commandKeyPressed(Command.PUNCH2);
+				break;
+			case KeyEvent.VK_2:
+				commandKeyPressed(Command.KICK2);
+				break;
+			case KeyEvent.VK_3:
+				commandKeyPressed(Command.BLOCK2);
+				break;
+			case KeyEvent.VK_4:
+				commandKeyPressed(Command.WIN2);
+				break;
+			case KeyEvent.VK_S:
+				commandKeyPressed(Command.IDLE2);
+				break;	
 			default:
 			}
 		}
