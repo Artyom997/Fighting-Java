@@ -21,7 +21,8 @@ public class MyKeyboardListener extends KeyboardListener{
 	@Override
 	public void commandKeyPressed(Command command) {
 		switch (command) {
-		  case PUNCH:
+		  //comand for character 1
+			case PUNCH:
 			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.PUNCH);
 			  myContent.character(1).command(command);
 			  break;
@@ -37,10 +38,31 @@ public class MyKeyboardListener extends KeyboardListener{
 			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.WIN);
 			  myContent.character(1).command(command);
 			  break;
+			
+			//command for character 2
+		  case PUNCH2:
+			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.PUNCH);
+			  myContent.character(2).command(command);
+			  break;
+		  case KICK2:
+			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.KICK);
+			  myContent.character(2).command(command);
+			  break;
+		  case BLOCK2:
+			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.BLOCK);
+			  myContent.character(2).command(command);
+			  break;
+		  case WIN2:
+			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.WIN);
+			  myContent.character(2).command(command);
+			  break;
 		  default:
 			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
 			  myContent.character(1).command(command);
+			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(2).command(command);
 			  break;
+			
 		}
 	}
 	@Override
@@ -62,6 +84,24 @@ public class MyKeyboardListener extends KeyboardListener{
 			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
 			  myContent.character(1).command(MyCharacter1.Command.IDLE);
 			  break;
+
+		//command dor character 2
+		  case PUNCH2:
+			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(2).command(MyCharacter1.Command.IDLE);
+			  break;
+		  case KICK2:
+			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(2).command(MyCharacter1.Command.IDLE);
+			  break;
+		  case BLOCK2:
+			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(2).command(MyCharacter1.Command.IDLE);
+			  break;
+		  case WIN2:
+			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(2).command(MyCharacter1.Command.IDLE);
+			  break;
 		  default:
 		}
 	}
@@ -78,6 +118,18 @@ public class MyKeyboardListener extends KeyboardListener{
 			  myContent.character(1).move(1,MyCharacter1.Direction.LEFT);
 			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
 			  break;
+
+			  //direction for character 2
+		  case RIGHT2:
+			  myContent.character(2).setDirectionPolicy(MyCharacter1.Direction.RIGHT);
+			  myContent.character(2).move(2,MyCharacter1.Direction.RIGHT);
+			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Right");
+			  break;
+		  case LEFT2:
+			  myContent.character(2).setDirectionPolicy(MyCharacter1.Direction.LEFT);
+			  myContent.character(2).move(2,MyCharacter1.Direction.LEFT);
+			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
+			  break;
 		}
 	}
 	@Override
@@ -91,6 +143,18 @@ public class MyKeyboardListener extends KeyboardListener{
 		  case LEFT:
 			  myContent.character(1).setDirectionPolicy(MyCharacter1.Direction.STOP);
 			  myContent.character(1).move(1,MyCharacter1.Direction.STOP);
+			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
+			  break;
+
+		//direction for character 2
+		   case RIGHT2:
+			  myContent.character(2).setDirectionPolicy(MyCharacter1.Direction.STOP);
+			  myContent.character(2).move(2,MyCharacter1.Direction.STOP);
+			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Right");
+			  break;
+		   case LEFT:
+			  myContent.character(2).setDirectionPolicy(MyCharacter1.Direction.STOP);
+			  myContent.character(2).move(2,MyCharacter1.Direction.STOP);
 			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
 			  break;
 		}

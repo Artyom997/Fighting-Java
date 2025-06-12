@@ -81,9 +81,6 @@ public class KeyboardListener {
 			case KeyEvent.VK_4:
 				commandKeyPressed(Command.WIN2);
 				break;
-			case KeyEvent.VK_S:
-				commandKeyPressed(Command.IDLE2);
-				break;	
 			default:
 			}
 		}
