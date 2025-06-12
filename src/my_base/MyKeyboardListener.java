@@ -2,13 +2,15 @@ package my_base;
 
 import my_game.Pokimon;
 import my_game.MyCharacter1;
-import my_game.MyCharacter1.Command;
+import my_game.MyCharacter1.MyCommand;
 import my_ui_elements.DirectionCombo;
 
 import java.awt.event.KeyEvent;
 
 import base.Game;
 import base.KeyboardListener;
+import my_base.MyContent;
+import my_game.MyCharacter1;
 
 public class MyKeyboardListener extends KeyboardListener{
 
@@ -23,43 +25,43 @@ public class MyKeyboardListener extends KeyboardListener{
 		switch (command) {
 		  //comand for character 1
 			case PUNCH:
-			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.PUNCH);
-			  myContent.character(1).command(command);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.PUNCH);
+			  myContent.character(1).command(this.command);
 			  break;
 		  case KICK:
-			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.KICK);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.KICK);
 			  myContent.character(1).command(command);
 			  break;
 		  case BLOCK:
-			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.BLOCK);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.BLOCK);
 			  myContent.character(1).command(command);
 			  break;
 		  case WIN:
-			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.WIN);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.WIN);
 			  myContent.character(1).command(command);
 			  break;
 			
 			//command for character 2
 		  case PUNCH2:
-			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.PUNCH);
+			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.PUNCH);
 			  myContent.character(2).command(command);
 			  break;
 		  case KICK2:
-			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.KICK);
+			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.KICK);
 			  myContent.character(2).command(command);
 			  break;
 		  case BLOCK2:
-			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.BLOCK);
+			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.BLOCK);
 			  myContent.character(2).command(command);
 			  break;
 		  case WIN2:
-			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.WIN);
+			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.WIN);
 			  myContent.character(2).command(command);
 			  break;
 		  default:
-			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.IDLE);
 			  myContent.character(1).command(command);
-			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.IDLE);
+			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.IDLE);
 			  myContent.character(2).command(command);
 			  break;
 			
@@ -69,38 +71,38 @@ public class MyKeyboardListener extends KeyboardListener{
 	public void commandKeyReleased(Command command) {
 		switch (command) {
 		  case PUNCH:
-			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character(1).command(MyCharacter1.Command.IDLE);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.IDLE);
+			  myContent.character(1).command(MyCharacter1.MyCommand.IDLE);
 			  break;
 		  case KICK:
-			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character(1).command(MyCharacter1.Command.IDLE);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.IDLE);
+			  myContent.character(1).command(MyCharacter1.MyCommand.IDLE);
 			  break;
 		  case BLOCK:
-			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character(1).command(MyCharacter1.Command.IDLE);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.IDLE);
+			  myContent.character(1).command(MyCharacter1.MyCommand.IDLE);
 			  break;
 		  case WIN:
-			  myContent.character(1).setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character(1).command(MyCharacter1.Command.IDLE);
+			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.IDLE);
+			  myContent.character(1).command(MyCharacter1.MyCommand.IDLE);
 			  break;
 
 		//command dor character 2
 		  case PUNCH2:
-			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character(2).command(MyCharacter1.Command.IDLE);
+			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.IDLE);
+			  myContent.character(2).command(MyCharacter1.MyCommand.IDLE);
 			  break;
 		  case KICK2:
-			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character(2).command(MyCharacter1.Command.IDLE);
+			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.IDLE);
+			  myContent.character(2).command(MyCharacter1.MyCommand.IDLE);
 			  break;
 		  case BLOCK2:
-			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character(2).command(MyCharacter1.Command.IDLE);
+			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.IDLE);
+			  myContent.character(2).command(MyCharacter1.MyCommand.IDLE);
 			  break;
 		  case WIN2:
-			  myContent.character(2).setCommandPolicy(MyCharacter1.Command.IDLE);
-			  myContent.character(2).command(MyCharacter1.Command.IDLE);
+			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.IDLE);
+			  myContent.character(2).command(MyCharacter1.MyCommand.IDLE);
 			  break;
 		  default:
 		}

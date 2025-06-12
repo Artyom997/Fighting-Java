@@ -5,10 +5,16 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import my_game.MyCharacter1.Command;
+import my_game.MyCharacter1.Direction;
 
 public class KeyboardListener {
 	public enum Direction {
-		RIGHT, LEFT, UP, DOWN, STOP;
+		RIGHT, LEFT, UP, DOWN, STOP,
+		RIGHT2, LEFT2, UP2, DOWN2, STOP2;
+	}
+	public enum Command {
+		PUNCH, KICK, BLOCK, WIN, IDLE,
+		PUNCH2, KICK2, BLOCK2, WIN2, IDLE2;
 	}
 
 	public KeyListener keyListener = new KeyListener() {
@@ -26,12 +32,12 @@ public class KeyboardListener {
 			case KeyEvent.VK_LEFT:
 				directionalKeyPressed(Direction.LEFT);
 				break;
-			case KeyEvent.VK_UP:
-				directionalKeyPressed(Direction.UP);
-				break;
-			case KeyEvent.VK_DOWN:
-				directionalKeyPressed(Direction.DOWN);
-				break;
+			//case KeyEvent.VK_UP:
+			//	directionalKeyPressed(Direction.UP);
+			//	break;
+			//case KeyEvent.VK_DOWN:
+			//	directionalKeyPressed(Direction.DOWN);
+			//	break;
 			case KeyEvent.VK_ENTER:
 				enterKeyPressed();
 				break;
@@ -63,12 +69,12 @@ public class KeyboardListener {
 			case KeyEvent.VK_A:
 				directionalKeyPressed(Direction.LEFT2);
 				break;
-			case KeyEvent.VK_W:
-				directionalKeyPressed(Direction.UP2);
-				break;
-			case KeyEvent.VK_X:
-				directionalKeyPressed(Direction.DOWN2);
-				break;
+			//case KeyEvent.VK_W:
+			//	directionalKeyPressed(Direction.UP2);
+			//	break;
+			//case KeyEvent.VK_X:
+			//	directionalKeyPressed(Direction.DOWN2);
+			//	break;
 			case KeyEvent.VK_1:
 				commandKeyPressed(Command.PUNCH2);
 				break;
@@ -80,7 +86,7 @@ public class KeyboardListener {
 				break;
 			case KeyEvent.VK_4:
 				commandKeyPressed(Command.WIN2);
-				break;
+				break;	
 			default:
 			}
 		}
@@ -93,12 +99,12 @@ public class KeyboardListener {
 			case KeyEvent.VK_LEFT:
 				directionalKeyReleased(Direction.LEFT);
 				break;
-			case KeyEvent.VK_UP:
-				directionalKeyReleased(Direction.UP);
-				break;
-			case KeyEvent.VK_DOWN:
-				directionalKeyReleased(Direction.DOWN);
-				break;
+			//case KeyEvent.VK_UP:
+			//	directionalKeyReleased(Direction.UP);
+			//	break;
+			//case KeyEvent.VK_DOWN:
+			//	directionalKeyReleased(Direction.DOWN);
+			//	break;
 				case KeyEvent.VK_NUMPAD1:
 				commandKeyReleased(Command.PUNCH);
 				break;
@@ -113,6 +119,21 @@ public class KeyboardListener {
 				break;
 			case KeyEvent.VK_NUMPAD4:
 				commandKeyReleased(Command.IDLE);
+				break;
+			case KeyEvent.VK_1:
+				commandKeyPressed(Command.PUNCH2);
+				break;
+			case KeyEvent.VK_2:
+				commandKeyPressed(Command.KICK2);
+				break;
+			case KeyEvent.VK_3:
+				commandKeyPressed(Command.BLOCK2);
+				break;
+			case KeyEvent.VK_4:
+				commandKeyPressed(Command.WIN2);
+				break;
+			case KeyEvent.VK_S:
+				commandKeyPressed(Command.IDLE2);
 				break;
 			default:
 			}

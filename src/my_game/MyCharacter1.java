@@ -16,7 +16,7 @@ import shapes.Image;
 //If so, add it to the class definition and implement the methods you want.
 public class MyCharacter1 implements ShapeListener {
 	
-	public enum Direction{
+	public enum MyDirection{
 		RIGHT(10,0),
 		LEFT(-10,0),
 		//UP(0,-10),
@@ -24,7 +24,7 @@ public class MyCharacter1 implements ShapeListener {
 		STOP(0,0);
 		
 		private final int xVec, yVec;
-		private Direction(int xVec, int yVec) {
+		private MyDirection(int xVec, int yVec) {
 			this.xVec = xVec;
 			this.yVec = yVec;
 		}
@@ -35,7 +35,7 @@ public class MyCharacter1 implements ShapeListener {
 			return yVec;
 		}
 	}
-	public enum Command{
+	public enum MyCommand{
 		PUNCH("PUNCH"),
 		KICK("KICK"),
 		BLOCK("BLOCK"),
@@ -43,7 +43,7 @@ public class MyCharacter1 implements ShapeListener {
 		IDLE("IDLE");
 		
 		private final String command;
-		private Command(String command) {
+		private MyCommand(String command) {
 			this.command = command;
 		}
 		public String getCommand() {
@@ -54,10 +54,10 @@ public class MyCharacter1 implements ShapeListener {
 	private ScreenPoint location1;
 	private ScreenPoint location2;
 
-	private Direction directionPolicy = Direction.STOP;
-	private Direction direction = Direction.STOP;
-	private Command commandPolicy = Command.IDLE;
-	private Command command = Command.IDLE;
+	private MyDirection directionPolicy = MyDirection.STOP;
+	private MyDirection direction = MyDirection.STOP;
+	private MyCommand commandPolicy = MyCommand.IDLE;
+	private MyCommand command = MyCommand.IDLE;
 	public int speed = 1;//change this to change the speed of the character
 
 	
@@ -115,20 +115,20 @@ public class MyCharacter1 implements ShapeListener {
 		this.isMoving = isMoving;
 	}
 
-	public void setDirectionPolicy(Direction direction) {
+	public void setDirectionPolicy(MyDirection direction) {
 		directionPolicy = direction;
 	}
-	public void setCommandPolicy(Command command) {
+	public void setCommandPolicy(MyCommand command) {
 		commandPolicy = command;
 	}
-	public void getCommandPolicy(Command command) {
+	public void getCommandPolicy(MyCommand command) {
 		this.command = commandPolicy;
 	}
-	public Direction getDirection() {
+	public MyDirection getDirection() {
 		return direction;
 	}
 
-	public Direction getPolicy() {
+	public MyDirection getPolicy() {
 		return directionPolicy;
 	}
 	
@@ -175,7 +175,7 @@ public class MyCharacter1 implements ShapeListener {
 	private int getImageHeight() {
 		return imageHeight[imageIndex];
 	}
-	public void move(int index, Direction direction) {
+	public void move(int index, MyDirection direction) {
 		if (isMoving) {
 			// Move according to policy
 			this.direction = direction;
@@ -200,7 +200,7 @@ public class MyCharacter1 implements ShapeListener {
 			//}
 		}
 	}
-	public void command(Command command) {
+	public void command(MyCommand command) {
 		this.command = command;
 		switch (command) {
 			case PUNCH: this.imageIndex = 2; break;
