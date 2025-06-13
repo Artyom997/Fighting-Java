@@ -9,11 +9,13 @@ import base.GameContent;
 import base.GameUI;
 import my_game.MyCharacter1;
 import my_game.MyPolygon;
+import my_base.GameControl;
 import my_base.InVicinity;
 
 public class MyContent extends GameContent{
 	private Pokimon pokimon;
 	private MyPolygon myPolygon;
+	public GameControl control;
 	private MyCharacter1 ryu;
 	private MyCharacter1 ermak;
 	
@@ -30,11 +32,15 @@ public class MyContent extends GameContent{
 		
 		ryu = new MyCharacter1(1);
 		ermak = new MyCharacter1(2);
+		control = new GameControl();
 		//ryu.initImage();
 	}	
 	
 	public Pokimon pokimon() {
 		return pokimon;
+	}
+	public GameControl control() {
+		return control;
 	}
 	public MyCharacter1 character(int index) {
 		if (index == 1) {
