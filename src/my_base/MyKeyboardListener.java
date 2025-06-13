@@ -161,25 +161,25 @@ public class MyKeyboardListener extends KeyboardListener{
 
 	@Override
 	public void characterTyped(char c) {
-		System.out.println("key character = '" + c + "'" + " pressed.");
+		//System.out.println("key character = '" + c + "'" + " pressed.");
 	}
 	
 	@Override
 	public void enterKeyPressed() {
-		System.out.println("enter key pressed.");
+		//System.out.println("enter key pressed.");
 	}
 	
 	@Override
 	public void backSpaceKeyPressed() {
-		System.out.println("backSpace key pressed.");
+		//System.out.println("backSpace key pressed.");
 	}
 	
 	@Override
 	public void spaceKeyPressed() {
-		System.out.println("space key pressed.");
+		//System.out.println("space key pressed.");
 	}
 	
 	public void otherKeyPressed(KeyEvent e) {
-		System.out.println("other key pressed. type:" + e);
+		//System.out.println("other key pressed. type:" + e);
 	}
 }

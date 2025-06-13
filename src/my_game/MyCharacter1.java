@@ -58,8 +58,15 @@ public class MyCharacter1 implements ShapeListener {
 	private MyDirection direction = MyDirection.STOP;
 	private MyCommand commandPolicy = MyCommand.IDLE;
 	private MyCommand command = MyCommand.IDLE;
-	public int speed = 1;//change this to change the speed of the character
-
+	public int speed = 2;//change this to change the speed of the character
+	
+	public int getSpeed() {
+		return speed;
+	}
+	
+	public void setSpeed(int speed) {
+		this.speed = speed;
+	}
 	
 	private String[] images = {
 		"resources/gifs/ryu-standing.gif",
@@ -88,7 +95,6 @@ public class MyCharacter1 implements ShapeListener {
 		if (index == 1) {setLocation(1, new ScreenPoint(200, 330));}
 		else setLocation(2, new ScreenPoint(500, 330));
 	}
-
 	public void addToCanvas(int index) {
 		GameCanvas canvas = Game.UI().canvas();
 		Image image;
@@ -101,6 +107,7 @@ public class MyCharacter1 implements ShapeListener {
 		image.setzOrder(3);
 		canvas.addShape(image);
 	}
+	/*
 	public void moveLocation(int index, int dx, int dy) {
 		if (index == 1) {
 			this.location1.x += dx;
@@ -110,6 +117,7 @@ public class MyCharacter1 implements ShapeListener {
 			this.location2.y += dy;
 		}
 	}
+	*/
 
 	public void setMoving(boolean isMoving) {
 		this.isMoving = isMoving;
@@ -177,7 +185,6 @@ public class MyCharacter1 implements ShapeListener {
 	}
 	public void move(int index, MyDirection direction) {
 		if (isMoving) {
-			// Move according to policy
 			this.direction = direction;
 			ScreenPoint location = getLocation(index);
 			ScreenPoint desired = new ScreenPoint(location.x + speed*direction.xVec(), location.y + speed*direction.yVec());
