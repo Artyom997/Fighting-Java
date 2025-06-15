@@ -6,7 +6,7 @@ import base.PeriodicLoop;
 import ui_elements.ScreenPoint;
 import base.ShapeListener;
 import base.IntersectionAlgorithm;
-import my_base.GameControl;
+//import my_game.GameControl;
 import my_base.InVicinity;
 import my_base.MyContent;
 import DB.ExcelTable;
@@ -54,8 +54,8 @@ public class MyCharacter1 implements ShapeListener {
 	private ExcelTable ryuTable;
 	private ScreenPoint location1;
 	private ScreenPoint location2;
-	private MyContent content;
-	private GameControl gameControl = content.control();
+	//private MyContent content;
+	//private GameControl gameControl = content.control();
 
 	private MyDirection directionPolicy = MyDirection.STOP;
 	private MyDirection direction = MyDirection.STOP;
@@ -189,7 +189,6 @@ public class MyCharacter1 implements ShapeListener {
 	public void move(int index, MyDirection direction) {
 		if (isMoving) {
 			this.direction = direction;
-			gameControl.meleeControl();
 			ScreenPoint location = getLocation(index);
 			ScreenPoint desired = new ScreenPoint(location.x + speed*direction.xVec(), location.y + speed*direction.yVec());
 			location.x = desired.x;

@@ -13,12 +13,14 @@ import my_ui_elements.DirectionCombo;
 import my_ui_elements.EndButton;
 import my_ui_elements.MusicButton;
 import my_ui_elements.NewGameButton;
+import my_game.GameControl;
 import my_game.MyCharacter1;
 import my_base.InVicinity;
 
 public class MyGame extends Game {
 	
 	private MyContent content;
+	private GameControl control;
 
 	@Override
 	protected void initCanvas() {
@@ -72,6 +74,7 @@ public class MyGame extends Game {
 		// point to the content with a variable of type MyContent so we have access to all
 		// our game specific data
 		this.content = (MyContent) content;
+		control = new GameControl();
 	}
 	
 	public MyContent getContent() {
