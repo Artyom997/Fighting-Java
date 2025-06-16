@@ -17,6 +17,7 @@ public class InVicinity {
      */
     
     public static int meleeRadius = 90; // Default collision radius
+
     
     public static boolean inMelee(ScreenPoint p1, ScreenPoint p2) {
         double dx = p1.x - p2.x;

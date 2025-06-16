@@ -12,6 +12,8 @@ import my_base.InVicinity;
 
 public class MyPeriodicLoop extends PeriodicLoop {
 	private MyContent content;
+	MyCharacter1 char1;
+	MyCharacter1 char2;
 
 	public void setContent(MyContent content) {
 		this.content = content;
@@ -22,16 +24,24 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		// Let the super class do its work first
 		super.execute();
 
-		if(content.control()!=null){
-		content.control().gameStep();
-		}
-		//redrawCharacter();
+		//if(content.control()!=null){
+		char1 = updateCharacter1();
+		char2 = updateCharacter2();
+		content.control().gameStep(char1, char2);
+		//}
+		//System.out.println("check2!!!!!!!!!!!!!!!!!!!!!!!!!");
 	}
-	private void redrawCharacter() {
+	private MyCharacter1 updateCharacter1() {
 		GameCanvas canvas = Game.UI().canvas();
-		MyCharacter1 char1 = content.character(1);
-		MyCharacter1 char2 = content.character(2);
-		if (char1 == null || char2 == null) return;
-		
+		char1 = content.character(1);
+		//char2 = content.character(2);
+		return char1;
+		//if (char1 == null || char2 == null) return;
+	}
+	private MyCharacter1 updateCharacter2() {
+		GameCanvas canvas = Game.UI().canvas();
+		char2 = content.character(2);
+		return char2;
+		//if (char1 == null || char2 == null) return;
 	}
 }

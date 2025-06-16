@@ -73,6 +73,7 @@ public class MyGame extends Game {
 		super.setGameContent(content);
 		// point to the content with a variable of type MyContent so we have access to all
 		// our game specific data
+
 		this.content = (MyContent) content;
 		control = new GameControl();
 	}

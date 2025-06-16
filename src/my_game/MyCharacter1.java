@@ -96,7 +96,7 @@ public class MyCharacter1 implements ShapeListener {
 		ryuTable = Game.excelDB().createTableFromExcel("ryuMoves");
 		ryuTable.deleteAllRows();
 		if (index == 1) {setLocation(1, new ScreenPoint(200, 330));}
-		else setLocation(2, new ScreenPoint(500, 330));
+		else setLocation(2, new ScreenPoint(250, 330));
 	}
 	public void addToCanvas(int index) {
 		GameCanvas canvas = Game.UI().canvas();
