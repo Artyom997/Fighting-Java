@@ -11,6 +11,8 @@ import my_game.MyCharacter1;
 import my_game.MyPolygon;
 import my_game.GameControl;
 import my_base.InVicinity;
+import my_base.LifeBar;
+import my_base.PointsBar;
 
 public class MyContent extends GameContent{
 	private Pokimon pokimon;
@@ -18,6 +20,10 @@ public class MyContent extends GameContent{
 	private GameControl control;
 	private MyCharacter1 ryu;
 	private MyCharacter1 ermak;
+	private LifeBar char1HP;
+	private LifeBar char2HP;
+	private PointsBar char1P;
+	private PointsBar char2P;
 	
 	
 	//TODO
@@ -32,6 +38,10 @@ public class MyContent extends GameContent{
 
 		ryu = new MyCharacter1(1);
 		ermak = new MyCharacter1(2);
+		char1HP = new LifeBar(LifeBar.getMaxLife());
+		char2HP = new LifeBar(LifeBar.getMaxLife());
+		char1P = new PointsBar();
+		char2P = new PointsBar();
 		control = new GameControl();
 		//ryu.initImage();
 	}	
