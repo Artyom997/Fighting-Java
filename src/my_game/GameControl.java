@@ -1,6 +1,8 @@
 package my_game;
 import my_base.InVicinity;
+import my_base.LifeBar;
 import my_base.MyContent;
+import my_base.PointsBar;
 import my_game.MyCharacter1.MyDirection;
 //import my_game.MyCharacter1;
 //import my_game.MyCharacter1.MyDirection;
@@ -13,6 +15,10 @@ public class GameControl {
 	//private static InVicinity vicinity = new InVicinity();
     MyCharacter1 char1 = content.character(1);
     MyCharacter1 char2 = content.character(2);
+	LifeBar char1HP = content.life(1);
+    LifeBar char2HP = content.life(2);
+	PointsBar char1P = content.points(1);
+    PointsBar char2P = content.points(2);
 	static int leftBorder = 50;
 	static int rightBorder = 850;
     // Returns the distance between two characters
@@ -24,7 +30,8 @@ public class GameControl {
 		//System.out.println("game step!!!!!!!!!!!!!!!!!!!!!!!!!");
 		distanceControl(char1,char2);
 		borderControl(char1, char2);
-		hitRegistration(char1, char2);
+		hitRegistration(char1, char2, char1HP, char2HP, char1P, char2P);
+
 		//hit registration
 		//update life bar
 		//update score	
@@ -75,29 +82,34 @@ public class GameControl {
 		
 		}
 	}
-	public static void hitRegistration(MyCharacter1 char1, MyCharacter1 char2) {
+	public static void hitRegistration(MyCharacter1 char1, MyCharacter1 char2,LifeBar char1HP, LifeBar char2HP, PointsBar char1P, PointsBar char2P) {
 		if (InVicinity(char1.getLocation(1), char2.getLocation(2))) {
-			//Left Character attacks
-			//Successful Punch
 			if (char1.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char2.getCommandPolicy() == MyCharacter1.MyCommand.BLOCK) {
 				System.out.println("Char1: Punch blocked!");
-			} else if (char1.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
+				char2P.increasePoints(50);	
+			} 
+
+			else if (char1.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char2.getCommandPolicy() != MyCharacter1.MyCommand.BLOCK) {
 				System.out.println("Char1: Punch hit!");
-				// Update life bar or score here
+				char1P.increasePoints(100);
+				char2HP.decreaseLife(1);
 			}
-			//Left Character attacks
-			//Successful Punch
+
 			if (char2.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char1.getCommandPolicy() == MyCharacter1.MyCommand.BLOCK) {
 				System.out.println("Char2: Punch blocked!");
-			} else if (char2.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
+				char1P.increasePoints(50);
+			}
+			
+			else if (char2.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char1.getCommandPolicy() != MyCharacter1.MyCommand.BLOCK) {
 				System.out.println("Char2: Punch hit!");
-				// Update life bar or score here
+				char2P.increasePoints(100);
+				char1HP.decreaseLife(1);
 			}
-			// Add more hit registration logic as needed
 		}
+		
 	}
 }

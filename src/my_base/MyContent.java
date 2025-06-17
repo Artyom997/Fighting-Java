@@ -57,11 +57,26 @@ public class MyContent extends GameContent{
 			return ryu;
 		} 
 		else
-			return ermak;
-		
+			return ermak;		
 	}
 
-	public void addCharacter(int index) { //AVI + DAVID
+	public LifeBar life(int index) {
+	if (index == 1) {
+	return char1HP;
+	} 
+		else
+	return char2HP;		
+	}
+
+	public PointsBar points(int index) {
+		if (index == 1) {
+			return char1P;
+		} 
+		else
+			return char2P;		
+	}
+
+	public void addCharacter(int index) { 
 		ryu.addToCanvas(index);
 	}
 	public void changeCharacter() {
