@@ -27,36 +27,27 @@ public class GameControl {
 	}
 
 	public void gameStep(MyCharacter1 char1, MyCharacter1 char2, LifeBar char1HP, LifeBar char2HP, PointsBar char1P, PointsBar char2P) {
-		//System.out.println("game step!!!!!!!!!!!!!!!!!!!!!!!!!");
-	
+
 		distanceControl(char1,char2);
 		borderControl(char1, char2);
 		hitRegistration(char1, char2, char1HP, char2HP, char1P, char2P);
-
-	if (char1HP == null) {
-System.out.println("char1HP is null");
-}
-if (char2HP == null) {
-System.out.println("char2HP is null");
-}
-	System.out.println( " char2hp: " + char2HP.getCurrentLife());
-
-		//hit registration
-		//update life bar
-		//update score	
+		System.out.println( " char2hp: " + char2HP.getCurrentLife());
+		//update life bar- updated in my_periodic loop
+		//update score- updated in my_periodic loo	
 		checkGameOver();
 	}
 
 	public void checkGameOver() {
 		//write your game over logic here
 	}
+
     public static boolean InVicinity(ScreenPoint  p1, ScreenPoint p2) {
         int meleeRadius = 90; // Default collision radius
         double dx = p1.x - p2.x;
         double distance = Math.sqrt(dx * dx);
         return distance <= meleeRadius;
-	
 	}
+
     public static void distanceControl(MyCharacter1 char1, MyCharacter1 char2) {
 		if (InVicinity(char1.getLocation(1), char2.getLocation(2))&&
 		(char1.getPolicy() == MyDirection.RIGHT||
@@ -69,11 +60,11 @@ System.out.println("char2HP is null");
 				char1.setSpeed(2);
 				char2.setSpeed(2);
 			}
-			else 
-			{char1.setSpeed(0);
+			else{char1.setSpeed(0);
 			char2.setSpeed(0);}
     	}
 	}
+	
 	public static void borderControl(MyCharacter1 char1, MyCharacter1 char2) {
 		if (char1.getLocation(1).getX()<=leftBorder)
 		{

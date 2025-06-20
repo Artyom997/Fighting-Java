@@ -24,6 +24,7 @@ public class MyContent extends GameContent{
 	private LifeBar char2HP;
 	private PointsBar char1P;
 	private PointsBar char2P;
+	 private String selectedCharacter;
 	
 	
 	//TODO
@@ -101,6 +102,15 @@ public class MyContent extends GameContent{
 		//Create an instance of your character and set its properties with
 		//new values.
 	}
+
+	
+    public void setSelectedCharacter(String name) {
+        this.selectedCharacter = name;
+    }
+
+    public String getSelectedCharacter() {
+        return selectedCharacter;
+    }
 	//TODO
 	//create a changeCharacter method and change inside all the properties you like.
 }

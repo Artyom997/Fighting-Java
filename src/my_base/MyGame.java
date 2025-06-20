@@ -13,6 +13,7 @@ import my_ui_elements.DirectionCombo;
 import my_ui_elements.EndButton;
 import my_ui_elements.MusicButton;
 import my_ui_elements.NewGameButton;
+import my_game.CharacterSelectFrame;
 import my_game.GameControl;
 import my_game.MyCharacter1;
 import my_base.LifeBar;
@@ -84,7 +85,26 @@ public class MyGame extends Game {
 	}
 	
 	public static void main(String[] args) {
-		MyGame game = new MyGame();
+		
+		        javax.swing.SwingUtilities.invokeLater(() -> {
+            CharacterSelectFrame selectFrame = new CharacterSelectFrame(characterName -> {
+                // After character is selected, set up the game
+                MyGame game = new MyGame();
+                MyContent content = new MyContent();
+                content.setSelectedCharacter(characterName); // Store the selection
+                game.setGameContent(content);
+
+                MyPeriodicLoop periodicLoop = new MyPeriodicLoop();
+                periodicLoop.setContent(game.getContent());
+                game.setPeriodicLoop(periodicLoop);
+                game.setMouseHandler(new MyMouseHandler());
+                game.setKeyboardListener(new MyKeyboardListener());
+                game.initGame();
+            });
+            selectFrame.setVisible(true);
+        });
+		/* 
+		MyGame game = new MyGame();	
 		game.setGameContent(new MyContent());
 		MyPeriodicLoop periodicLoop = new MyPeriodicLoop();
 		periodicLoop.setContent(game.getContent());
@@ -92,5 +112,6 @@ public class MyGame extends Game {
 		game.setMouseHandler(new MyMouseHandler());
 		game.setKeyboardListener(new MyKeyboardListener());
 		game.initGame();
+		*/
 	}
 }
