@@ -38,11 +38,21 @@ public class MyContent extends GameContent{
 
 		ryu = new MyCharacter1(1);
 		ermak = new MyCharacter1(2);
-		char1HP = new LifeBar(LifeBar.getMaxLife());
-		char2HP = new LifeBar(LifeBar.getMaxLife());
+		//char1HP = new LifeBar(LifeBar.getMaxLife());
+		//char2HP = new LifeBar(LifeBar.getMaxLife());
+		char1HP = new LifeBar();
+		char2HP = new LifeBar();
 		char1P = new PointsBar();
 		char2P = new PointsBar();
 		control = new GameControl();
+		//check if the life bars are initialized correctly
+		/*	
+		System.out.println("life 1char1hp"+ life(1).getCurrentLife());
+		System.out.println("char2hp"+ char2HP.getCurrentLife());
+		System.out.println("life 1char1hp"+ life(1).getCurrentLife());
+		System.out.println("life 2char1hp"+ life(2).getCurrentLife());
+ */
+
 		//ryu.initImage();
 	}	
 	
@@ -64,8 +74,8 @@ public class MyContent extends GameContent{
 	if (index == 1) {
 	return char1HP;
 	} 
-		else
-	return char2HP;		
+		else		
+	return char2HP;
 	}
 
 	public PointsBar points(int index) {

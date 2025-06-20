@@ -15,7 +15,8 @@ import my_ui_elements.MusicButton;
 import my_ui_elements.NewGameButton;
 import my_game.GameControl;
 import my_game.MyCharacter1;
-import my_base.InVicinity;
+import my_base.LifeBar;
+import my_base.PointsBar;
 
 public class MyGame extends Game {
 	

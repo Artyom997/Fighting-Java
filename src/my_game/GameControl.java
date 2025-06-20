@@ -12,7 +12,7 @@ import ui_elements.ScreenPoint;
 
 public class GameControl {
 	MyContent content = new MyContent();
-	//private static InVicinity vicinity = new InVicinity();
+	//private static InVicinity vicinity = new InVicinity();	
     MyCharacter1 char1 = content.character(1);
     MyCharacter1 char2 = content.character(2);
 	LifeBar char1HP = content.life(1);
@@ -21,16 +21,25 @@ public class GameControl {
     PointsBar char2P = content.points(2);
 	static int leftBorder = 50;
 	static int rightBorder = 850;
-    // Returns the distance between two characters
+
 
 	public GameControl() {
 	}
 
-	public void gameStep(MyCharacter1 char1, MyCharacter1 char2) {
+	public void gameStep(MyCharacter1 char1, MyCharacter1 char2, LifeBar char1HP, LifeBar char2HP, PointsBar char1P, PointsBar char2P) {
 		//System.out.println("game step!!!!!!!!!!!!!!!!!!!!!!!!!");
+	
 		distanceControl(char1,char2);
 		borderControl(char1, char2);
 		hitRegistration(char1, char2, char1HP, char2HP, char1P, char2P);
+
+	if (char1HP == null) {
+System.out.println("char1HP is null");
+}
+if (char2HP == null) {
+System.out.println("char2HP is null");
+}
+	System.out.println( " char2hp: " + char2HP.getCurrentLife());
 
 		//hit registration
 		//update life bar
