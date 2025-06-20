@@ -27,11 +27,12 @@ public class GameControl {
 	}
 
 	public void gameStep(MyCharacter1 char1, MyCharacter1 char2, LifeBar char1HP, LifeBar char2HP, PointsBar char1P, PointsBar char2P) {
-
 		distanceControl(char1,char2);
 		borderControl(char1, char2);
+		//char1.move(1, char1.getDirectionPolicy());
+		//char2.move(2, char2.getDirectionPolicy());
 		hitRegistration(char1, char2, char1HP, char2HP, char1P, char2P);
-		System.out.println( " char2hp: " + char2HP.getCurrentLife());
+		//System.out.println( " char2hp: " + char2HP.getCurrentLife());
 		//update life bar- updated in my_periodic loop
 		//update score- updated in my_periodic loo	
 		checkGameOver();
@@ -50,13 +51,13 @@ public class GameControl {
 
     public static void distanceControl(MyCharacter1 char1, MyCharacter1 char2) {
 		if (InVicinity(char1.getLocation(1), char2.getLocation(2))&&
-		(char1.getPolicy() == MyDirection.RIGHT||
-		char2.getPolicy() == MyDirection.LEFT||
-		char1.getPolicy() == MyDirection.STOP||char2.getPolicy() == MyDirection.STOP))
+		(char1.getDirectionPolicy() == MyDirection.RIGHT||
+		char2.getDirectionPolicy() == MyDirection.LEFT||
+		char1.getDirectionPolicy() == MyDirection.STOP||char2.getDirectionPolicy() == MyDirection.STOP))
 		{
 			char1.setSpeed(0);
 			char2.setSpeed(0);
-			if(char1.getPolicy() == MyDirection.LEFT || char2.getPolicy() == MyDirection.RIGHT) {
+			if(char1.getDirectionPolicy() == MyDirection.LEFT || char2.getDirectionPolicy() == MyDirection.RIGHT) {
 				char1.setSpeed(2);
 				char2.setSpeed(2);
 			}
@@ -69,14 +70,14 @@ public class GameControl {
 		if (char1.getLocation(1).getX()<=leftBorder)
 		{
 			char1.setSpeed(0);
-			if(char1.getPolicy() == MyDirection.RIGHT) {
+			if(char1.getDirectionPolicy() == MyDirection.RIGHT) {
 				char1.setSpeed(2);
 			}
 		}
 		if (char2.getLocation(2).getX()>=rightBorder)
 		{
 			char2.setSpeed(0);
-			if(char2.getPolicy() == MyDirection.LEFT) {
+			if(char2.getDirectionPolicy() == MyDirection.LEFT) {
 				char2.setSpeed(2);
 			}
 		
@@ -87,7 +88,7 @@ public class GameControl {
 			if (char1.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char2.getCommandPolicy() == MyCharacter1.MyCommand.BLOCK) {
 				System.out.println("Char1: Punch blocked!");
-				char2P.increasePoints(50);	
+				char2P.increasePoints(50);
 			} 
 
 			else if (char1.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&

@@ -1,6 +1,6 @@
 package my_base;
 
-import my_game.Pokimon;
+//import my_game.Pokimon;
 import my_game.MyCharacter1;
 import my_ui_elements.DirectionCombo;
 
@@ -110,24 +110,24 @@ public class MyKeyboardListener extends KeyboardListener{
 		  case RIGHT:
 			  myContent.character(1).setDirectionPolicy(MyCharacter1.MyDirection.RIGHT);
 			  myContent.character(1).move(1,MyCharacter1.MyDirection.RIGHT);
-			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Right");
+			  //((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Right");
 			  break;
 		  case LEFT:
 			  myContent.character(1).setDirectionPolicy(MyCharacter1.MyDirection.LEFT);
 			  myContent.character(1).move(1,MyCharacter1.MyDirection.LEFT);
-			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
+			  //((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
 			  break;
 
 			  //direction for character 2
 		  case RIGHT2:
 			  myContent.character(2).setDirectionPolicy(MyCharacter1.MyDirection.RIGHT);
 			  myContent.character(2).move(2,MyCharacter1.MyDirection.RIGHT);
-			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Right");
+			  //((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Right");
 			  break;
 		  case LEFT2:
 			  myContent.character(2).setDirectionPolicy(MyCharacter1.MyDirection.LEFT);
 			  myContent.character(2).move(2,MyCharacter1.MyDirection.LEFT);
-			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
+			  //((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
 			  break;
 		}
 	}
@@ -135,26 +135,28 @@ public class MyKeyboardListener extends KeyboardListener{
 	public void directionalKeyReleased(Direction direction) {
 		switch (direction) {
 		  case RIGHT:
-			  myContent.character(1).setDirectionPolicy(MyCharacter1.MyDirection.STOP);
-			  myContent.character(1).move(1,MyCharacter1.MyDirection.STOP);
-			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Right");
-			  break;
 		  case LEFT:
 			  myContent.character(1).setDirectionPolicy(MyCharacter1.MyDirection.STOP);
 			  myContent.character(1).move(1,MyCharacter1.MyDirection.STOP);
-			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
+			  //((DirectionCombo) (Game.UI().dashboard().getUIElement("directionC ombo"))).setDirection("Right");
+			 // break;
+		  //case LEFT:
+			  myContent.character(1).setDirectionPolicy(MyCharacter1.MyDirection.STOP);
+			  myContent.character(1).move(1,MyCharacter1.MyDirection.STOP);
+			  //((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
 			  break;
 
 		//direction for character 2
 		   case RIGHT2:
-			  myContent.character(2).setDirectionPolicy(MyCharacter1.MyDirection.STOP);
-			  myContent.character(2).move(2,MyCharacter1.MyDirection.STOP);
-			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Right");
-			  break;
 		   case LEFT2:
 			  myContent.character(2).setDirectionPolicy(MyCharacter1.MyDirection.STOP);
 			  myContent.character(2).move(2,MyCharacter1.MyDirection.STOP);
-			  ((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
+			  //((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Right");
+			  //break;
+		   //case LEFT2:
+			  myContent.character(2).setDirectionPolicy(MyCharacter1.MyDirection.STOP);
+			  myContent.character(2).move(2,MyCharacter1.MyDirection.STOP);
+			  //((DirectionCombo) (Game.UI().dashboard().getUIElement("directionCombo"))).setDirection("Left");
 			  break;
 		}
 	}

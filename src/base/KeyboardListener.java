@@ -6,8 +6,10 @@ import java.awt.event.KeyListener;
 
 public class KeyboardListener {
 	public enum Direction {
-		RIGHT, LEFT, UP, DOWN, STOP,
-		RIGHT2, LEFT2, UP2, DOWN2, STOP2;
+		RIGHT, LEFT,
+		 //STOP, UP, DOWN,
+		RIGHT2, LEFT2; 
+		//STOP2, UP2, DOWN2;
 	}
 	public enum Command {
 		PUNCH, KICK, BLOCK, WIN, IDLE,

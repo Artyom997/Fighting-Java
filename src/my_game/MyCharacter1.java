@@ -2,13 +2,13 @@ package my_game;
 
 import base.Game;
 import base.GameCanvas;
-import base.PeriodicLoop;
+//import base.PeriodicLoop;
 import ui_elements.ScreenPoint;
 import base.ShapeListener;
-import base.IntersectionAlgorithm;
+//import base.IntersectionAlgorithm;
 //import my_game.GameControl;
-import my_base.InVicinity;
-import my_base.MyContent;
+//import my_base.InVicinity;
+//import my_base.MyContent;
 import DB.ExcelTable;
 import shapes.Image;
 
@@ -83,12 +83,12 @@ public class MyCharacter1 implements ShapeListener {
 
 	private final int[] imageWidth = {78, 78, 127, 154, 159, 112, 112};//The following two arrays hold the widths and heights of the different images.
 	private final int[] imageHeight = {111, 106, 105, 108, 140, 113, 113};//need to be changed according to each gif
-	private int locationIndex = 0;
+	//private int locationIndex = 0;
 	private int imageIndex = 0;
 	private String imageID = "Ryu";
 	private boolean isMoving = true;
 	
-	private int rotation = 0;	// In degrees
+	//private int rotation = 0;	// In degrees
 
 
 	public MyCharacter1(int index) {
@@ -139,7 +139,7 @@ public class MyCharacter1 implements ShapeListener {
 		return direction;
 	}
 
-	public MyDirection getPolicy() {
+	public MyDirection getDirectionPolicy() {
 		return directionPolicy;
 	}
 	
