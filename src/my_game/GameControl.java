@@ -50,8 +50,8 @@ public class GameControl {
 	}
 	public static void commandUpdate(MyCharacter1 char1, MyCharacter1 char2) {
 		javax.swing.SwingUtilities.invokeLater(() -> {
-            char1.command(char1.getCommandPolicy());
-			char2.command(char2.getCommandPolicy());
+            char1.command(1, char1.getCommandPolicy());
+			char2.command(2, char2.getCommandPolicy());
 		});
 	}
 
@@ -128,6 +128,5 @@ public class GameControl {
 				char1HP.decreaseLife(1);
 			}
 		}
-		
 	}
 }

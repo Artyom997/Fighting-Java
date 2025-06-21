@@ -82,18 +82,18 @@ public class MyCharacter1 implements ShapeListener {
 		"resources/gifs/ryu-walkf.gif",//img index 5
 		"resources/gifs/ryu-walkb.gif",//img index 6
 		//right character images
-		"resources/gifs/RYU-GIF-FLIP/ryu-standing-rotate.gif",//img index 7
-		"resources/gifs/RYU-GIF-FLIP/ryu-block-rotate.gif",//img index 8
-		"resources/gifs/RYU-GIF-FLIP/ryu-mp-rotate.gif",//img index 9
-		"resources/gifs/RYU-GIF-FLIP/ryu-mk-rotate.gif",//img index 10
-		"resources/gifs/RYU-GIF-FLIP/ryu-hurricane-ts-rotate.gif",//img index 11
-		"resources/gifs/RYU-GIF-FLIP/ryu-walkf-rotate.gif",//img index 12
-		"resources/gifs/RYU-GIF-FLIP/ryu-walkb-rotate.gif"//img index 13
+		"resources/gifs/RYU_GIF_FLIP/ryu-standing-rotate.gif",//img index 7
+		"resources/gifs/RYU_GIF_FLIP/ryu-block-rotate.gif",//img index 8
+		"resources/gifs/RYU_GIF_FLIP/ryu-mp-rotate.gif",//img index 9
+		"resources/gifs/RYU_GIF_FLIP/ryu-mk-rotate.gif",//img index 10
+		"resources/gifs/RYU_GIF_FLIP/ryu-hurricane-ts-rotate.gif",//img index 11
+		"resources/gifs/RYU_GIF_FLIP/ryu-walkf-rotate.gif",//img index 12
+		"resources/gifs/RYU_GIF_FLIP/ryu-walkb-rotate.gif"//img index 13
 
 	};
 
-	private final int[] imageWidth = {78, 78, 127, 154, 159, 112, 112,78, 78, 127, 154, 159, 112, 112};//The following two arrays hold the widths and heights of the different images.
-	private final int[] imageHeight = {111, 106, 105, 108, 140, 113, 113,111, 106, 105, 108, 140, 113, 113};//need to be changed according to each gif
+	private final int[] imageWidth = {78, 78, 127, 154, 159, 112, 112, 78, 78, 127, 154, 159, 112, 112};//The following two arrays hold the widths and heights of the different images.
+	private final int[] imageHeight = {111, 106, 105, 108, 140, 113, 113, 111, 106, 105, 108, 140, 113, 113};//need to be changed according to each gif
 	//private int locationIndex = 0;
 	private int imageIndex = 0;
 	private String imageID = "Ryu";
@@ -106,8 +106,13 @@ public class MyCharacter1 implements ShapeListener {
 		this.imageID = "char" + index;
 		ryuTable = Game.excelDB().createTableFromExcel("ryuMoves");
 		ryuTable.deleteAllRows();
-		if (index == 1) {setLocation(1, new ScreenPoint(200, 330));}
-		else setLocation(2, new ScreenPoint(500, 330));
+		if (index == 1) {
+			setLocation(1, new ScreenPoint(200, 330));
+			this.imageIndex = 0;
+		}
+		else{
+		setLocation(2, new ScreenPoint(500, 330));
+		this.imageIndex = 7;}
 	}
 	public void addToCanvas(int index) {
 		GameCanvas canvas = Game.UI().canvas();
@@ -206,21 +211,22 @@ public class MyCharacter1 implements ShapeListener {
 			location.y = desired.y;
 			if (index == 1) {
 				switch (direction) {
-					case LEFT: this.imageIndex = 6; break;
-					case RIGHT:  this.imageIndex = 5; break;
-					case STOP: this.imageIndex = 0; break;
+					case LEFT: imageIndex = 6; break;
+					case RIGHT:  imageIndex = 5; break;
+					case STOP: imageIndex = 0; break;
 				}
+				System.out.println("Char1 move: " + direction);
 			}
-			else {
-				switch (direction) {
-					case LEFT: this.imageIndex = 12; break;
-					case RIGHT:  this.imageIndex = 13; break;
-					case STOP: this.imageIndex = 7; break;
+			else if(index == 2) {
+				 switch (direction) {
+					case LEFT: imageIndex = 12; break;
+					case RIGHT:  imageIndex = 13; break;
+					case STOP: imageIndex = 7; break;
 				}
 			}
 			
-			Game.UI().canvas().moveShapeToLocation(imageID, location.x, location.y);
 			Game.UI().canvas().changeImage(imageID, getImageName(), getImageWidth(), getImageHeight());
+			Game.UI().canvas().moveShapeToLocation(imageID, location.x, location.y);
 			
 			//try {
 			//	ryuTable.insertRow(new String[] {PeriodicLoop.elapsedTime() + "", location.x + "", location.y +"", direction.toString()});
@@ -231,14 +237,25 @@ public class MyCharacter1 implements ShapeListener {
 			//}
 		}
 	}
-	public void command(MyCommand command) {
+	public void command(int index, MyCommand command) {
 		this.command = command;
-		switch (command) {
-			case PUNCH: this.imageIndex = 2; break;
-			case KICK:  this.imageIndex = 3; break;
-			case BLOCK: this.imageIndex = 1; break;
-			case WIN:   this.imageIndex = 4; break;
-			case IDLE:  this.imageIndex = 0; break;
+		if (index == 1) {
+			switch (command) {
+				case PUNCH: this.imageIndex = 2; break;
+				case KICK:  this.imageIndex = 3; break;
+				case BLOCK: this.imageIndex = 1; break;
+				case WIN:   this.imageIndex = 4; break;
+				case IDLE:  this.imageIndex = 0; break;
+			}
+		}
+		else if(index == 2) {
+			switch (command) {
+				case PUNCH: this.imageIndex = 9; break;
+				case KICK:  this.imageIndex = 10; break;
+				case BLOCK: this.imageIndex = 8; break;
+				case WIN:   this.imageIndex = 11; break;
+				case IDLE:  this.imageIndex = 7; break;
+			}
 		}
 		Game.UI().canvas().changeImage(imageID, getImageName(), getImageWidth(), getImageHeight());
 	}
