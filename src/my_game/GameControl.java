@@ -36,28 +36,21 @@ public class GameControl {
 		moveUpdate(char1, char2);
 		commandUpdate(char1, char2);
 		hitRegistration(char1, char2, char1HP, char2HP, char1P, char2P);
-		//System.out.println( " char2hp: " + char2HP.getCurrentLife());
-		//update life bar- updated in my_periodic loop
-		//update score- updated in my_periodic loo	
 		checkGameOver();
 	}
 
 	public void checkGameOver() {
-		//write your game over logic here
+
 	}
 	public static void moveUpdate(MyCharacter1 char1, MyCharacter1 char2) {
 		javax.swing.SwingUtilities.invokeLater(() -> {
             char1.move(1, char1.getDirectionPolicy());
-		//});
-		//javax.swing.SwingUtilities.invokeLater(() -> {
 			char2.move(2, char2.getDirectionPolicy());
 		});
 	}
 	public static void commandUpdate(MyCharacter1 char1, MyCharacter1 char2) {
 		javax.swing.SwingUtilities.invokeLater(() -> {
             char1.command(char1.getCommandPolicy());
-		//});
-		//javax.swing.SwingUtilities.invokeLater(() -> {
 			char2.command(char2.getCommandPolicy());
 		});
 	}
@@ -74,17 +67,20 @@ public class GameControl {
 		if (InVicinity(char1.getLocation(1), char2.getLocation(2))&&
 		(char1.getDirectionPolicy() == MyDirection.RIGHT||
 		char2.getDirectionPolicy() == MyDirection.LEFT||
-		char1.getDirectionPolicy() == MyDirection.STOP||char2.getDirectionPolicy() == MyDirection.STOP))
+		char1.getDirectionPolicy() == MyDirection.STOP||
+		char2.getDirectionPolicy() == MyDirection.STOP))
 		{
 			char1.setSpeed(0);
 			char2.setSpeed(0);
-			if(char1.getDirectionPolicy() == MyDirection.LEFT || char2.getDirectionPolicy() == MyDirection.RIGHT) {
-				char1.setSpeed(2);
-				char2.setSpeed(2);
-			}
+			if(char1.getDirectionPolicy() == MyDirection.LEFT){
+				char1.setSpeed(2);}
+			else if (char2.getDirectionPolicy() == MyDirection.RIGHT){
+				char2.setSpeed(2);}
 			else{char1.setSpeed(0);
 			char2.setSpeed(0);}
     	}
+		else{char1.setSpeed(2);
+			char2.setSpeed(2);}
 	}
 	
 	public static void borderControl(MyCharacter1 char1, MyCharacter1 char2) {
