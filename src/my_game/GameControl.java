@@ -2,6 +2,10 @@ package my_game;
 import my_base.InVicinity;
 import my_base.LifeBar;
 import my_base.MyContent;
+import my_base.MyGame;
+import my_base.MyKeyboardListener;
+import my_base.MyMouseHandler;
+import my_base.MyPeriodicLoop;
 import my_base.PointsBar;
 import my_game.MyCharacter1.MyDirection;
 //import my_game.MyCharacter1;
@@ -29,8 +33,8 @@ public class GameControl {
 	public void gameStep(MyCharacter1 char1, MyCharacter1 char2, LifeBar char1HP, LifeBar char2HP, PointsBar char1P, PointsBar char2P) {
 		distanceControl(char1,char2);
 		borderControl(char1, char2);
-		//char1.move(1, char1.getDirectionPolicy());
-		//char2.move(2, char2.getDirectionPolicy());
+		moveUpdate(char1, char2);
+		commandUpdate(char1, char2);
 		hitRegistration(char1, char2, char1HP, char2HP, char1P, char2P);
 		//System.out.println( " char2hp: " + char2HP.getCurrentLife());
 		//update life bar- updated in my_periodic loop
@@ -41,6 +45,23 @@ public class GameControl {
 	public void checkGameOver() {
 		//write your game over logic here
 	}
+	public static void moveUpdate(MyCharacter1 char1, MyCharacter1 char2) {
+		javax.swing.SwingUtilities.invokeLater(() -> {
+            char1.move(1, char1.getDirectionPolicy());
+		//});
+		//javax.swing.SwingUtilities.invokeLater(() -> {
+			char2.move(2, char2.getDirectionPolicy());
+		});
+	}
+	public static void commandUpdate(MyCharacter1 char1, MyCharacter1 char2) {
+		javax.swing.SwingUtilities.invokeLater(() -> {
+            char1.command(char1.getCommandPolicy());
+		//});
+		//javax.swing.SwingUtilities.invokeLater(() -> {
+			char2.command(char2.getCommandPolicy());
+		});
+	}
+
 
     public static boolean InVicinity(ScreenPoint  p1, ScreenPoint p2) {
         int meleeRadius = 90; // Default collision radius
