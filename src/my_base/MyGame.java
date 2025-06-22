@@ -36,9 +36,13 @@ public class MyGame extends Game {
 		//the character is initialized inside MyContent
 		MyCharacter1 char1 = content.character(1);
 		MyCharacter1 char2 = content.character(2);
+		LifeBar char1HP = content.life(1);
+		LifeBar char2HP = content.life(2);
 		//Pokimon pokimon = content.pokimon();
 		char1.addToCanvas(1);
 		char2.addToCanvas(2);
+		char1HP.addToCanvas(1);
+		char2HP.addToCanvas(2);
 	}
 	
 	@Override
@@ -85,9 +89,9 @@ public class MyGame extends Game {
 	}
 	
 	public static void main(String[] args) {
-		
+
 		        javax.swing.SwingUtilities.invokeLater(() -> {
-            CharacterSelectFrame selectFrame = new CharacterSelectFrame(characterName -> {
+            	CharacterSelectFrame selectFrame = new CharacterSelectFrame(characterName -> {
                 // After character is selected, set up the game
                 MyGame game = new MyGame();
                 MyContent content = new MyContent();

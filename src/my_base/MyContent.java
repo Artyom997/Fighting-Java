@@ -41,10 +41,10 @@ public class MyContent extends GameContent{
 		ermak = new MyCharacter1(2);
 		//char1HP = new LifeBar(LifeBar.getMaxLife());
 		//char2HP = new LifeBar(LifeBar.getMaxLife());
-		char1HP = new LifeBar();
-		char2HP = new LifeBar();
-		char1P = new PointsBar();
-		char2P = new PointsBar();
+		char1HP = new LifeBar(1);
+		char2HP = new LifeBar(2);
+		//char1P = new PointsBar(1);
+		//char2P = new PointsBar(2);
 		control = new GameControl();
 		//check if the life bars are initialized correctly
 		/*	

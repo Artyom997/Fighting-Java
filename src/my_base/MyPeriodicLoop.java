@@ -35,8 +35,8 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		//if(content.control()!=null){
 		char1 = updateCharacter1();
 		char2 = updateCharacter2();
-		LifeBar char1HP = updateLifeBar(1);
-		LifeBar char2HP = updateLifeBar(2);
+		//char1HP = updateLifeBar(1);
+		//char2HP = updateLifeBar(2);
 		char1P = updatePointsBar(1);
 		char2P = updatePointsBar(2);
 		content.control().gameStep(char1, char2,char1HP, char2HP, char1P, char2P);
@@ -46,38 +46,34 @@ public class MyPeriodicLoop extends PeriodicLoop {
 	private MyCharacter1 updateCharacter1() {
 		GameCanvas canvas = Game.UI().canvas();
 		char1 = content.character(1);
-		//char2 = content.character(2);
 		return char1;
-		//if (char1 == null || char2 == null) return;
 	}
 	private MyCharacter1 updateCharacter2() {
 		GameCanvas canvas = Game.UI().canvas();
 		char2 = content.character(2);
 		return char2;
-		//if (char1 == null || char2 == null) return;
 	}
 	private LifeBar updateLifeBar(int i) {
-		if(i==1){
-	char1HP = content.life(1);
-	return char1HP;
+		GameCanvas canvas = Game.UI().canvas();
+	if(i==1){
+		char1HP = content.life(1);
+		return char1HP;
 	}
 	else{
-	char2HP = content.life(2);
-	return char2HP;
+		char2HP = content.life(2);
+		return char2HP;
 	}
-}
+	}
 
-		private PointsBar updatePointsBar(int i) {
-			if(i==1){
+	private PointsBar updatePointsBar(int i) {
+	if(i==1){
 		char1P = content.points(1);
 		return char1P;
-		}
-		else{
+	}
+	else{
 		char2P = content.points(2);
 		return char2P;
-		}
-
-		//if (char1 == null || char2 == null) return;
+	}
 	}
 
 }

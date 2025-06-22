@@ -1,17 +1,8 @@
 package my_game;
-import my_base.InVicinity;
 import my_base.LifeBar;
 import my_base.MyContent;
-import my_base.MyGame;
-import my_base.MyKeyboardListener;
-import my_base.MyMouseHandler;
-import my_base.MyPeriodicLoop;
 import my_base.PointsBar;
 import my_game.MyCharacter1.MyDirection;
-//import my_game.MyCharacter1;
-//import my_game.MyCharacter1.MyDirection;
-//import my_game.MyContent;
-//import my_game.InVicinity;
 import ui_elements.ScreenPoint;
 
 public class GameControl {
@@ -111,9 +102,12 @@ public class GameControl {
 			else if (char1.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char2.getCommandPolicy() != MyCharacter1.MyCommand.BLOCK) {
 				System.out.println("Char1: Punch hit!");
-				char1P.increasePoints(100);
-				char2HP.decreaseLife(1);
+				//char1P.increasePoints(100);
+				//char2HP.decreaseLife(1);
+				//char2HP.setImageChanging(true);
+				//char2HP.changeImage();
 			}
+
 
 			if (char2.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char1.getCommandPolicy() == MyCharacter1.MyCommand.BLOCK) {
@@ -126,6 +120,7 @@ public class GameControl {
 				System.out.println("Char2: Punch hit!");
 				char2P.increasePoints(100);
 				char1HP.decreaseLife(1);
+				//char1HP.changeImage();
 			}
 		}
 	}
