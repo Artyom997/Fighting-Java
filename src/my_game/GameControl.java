@@ -16,7 +16,10 @@ public class GameControl {
     PointsBar char2P = content.points(2);
 	static int leftBorder = 50;
 	static int rightBorder = 850;
-
+	long time = System.currentTimeMillis();
+	private static long lastHitTimeChar1 = 0; // last time char1 hit char2
+	private static long lastHitTimeChar2 = 0; // last time char2 hit char1
+	private static final long HIT_COOLDOWN_MS = 700; // time period for a next hit to be registered, 0.5 seconds
 
 	public GameControl() {
 	}
@@ -92,35 +95,48 @@ public class GameControl {
 		}
 	}
 	public static void hitRegistration(MyCharacter1 char1, MyCharacter1 char2,LifeBar char1HP, LifeBar char2HP, PointsBar char1P, PointsBar char2P) {
+		long now = System.currentTimeMillis();
 		if (InVicinity(char1.getLocation(1), char2.getLocation(2))) {
 			if (char1.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char2.getCommandPolicy() == MyCharacter1.MyCommand.BLOCK) {
+				if (now - lastHitTimeChar1 >= HIT_COOLDOWN_MS) {
 				System.out.println("Char1: Punch blocked!");
-				char2P.increasePoints(50);
+				//char2P.increasePoints(50);
+				lastHitTimeChar1 = now;
+				}
 			} 
 
 			else if (char1.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char2.getCommandPolicy() != MyCharacter1.MyCommand.BLOCK) {
+				if (now - lastHitTimeChar1 >= HIT_COOLDOWN_MS) {
 				System.out.println("Char1: Punch hit!");
 				//char1P.increasePoints(100);
 				//char2HP.decreaseLife(1);
 				//char2HP.setImageChanging(true);
 				//char2HP.changeImage();
+				lastHitTimeChar1 = now;
+				}
 			}
 
 
 			if (char2.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char1.getCommandPolicy() == MyCharacter1.MyCommand.BLOCK) {
+				if (now - lastHitTimeChar2 >= HIT_COOLDOWN_MS) {
 				System.out.println("Char2: Punch blocked!");
-				char1P.increasePoints(50);
+				//char1P.increasePoints(50);
+				lastHitTimeChar2 = now;
+				}
 			}
 			
 			else if (char2.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char1.getCommandPolicy() != MyCharacter1.MyCommand.BLOCK) {
+			if (now - lastHitTimeChar2 >= HIT_COOLDOWN_MS) {
 				System.out.println("Char2: Punch hit!");
-				char2P.increasePoints(100);
-				char1HP.decreaseLife(1);
+				//char2P.increasePoints(100);
+				//char1HP.decreaseLife(1);
 				//char1HP.changeImage();
+				lastHitTimeChar2 = now;
+				}
 			}
 		}
 	}

@@ -215,7 +215,7 @@ public class MyCharacter1 implements ShapeListener {
 					case RIGHT:  imageIndex = 5; break;
 					case STOP: imageIndex = 0; break;
 				}
-				System.out.println("Char1 move: " + direction);
+				//System.out.println("Char1 move: " + direction);
 			}
 			else if(index == 2) {
 				 switch (direction) {

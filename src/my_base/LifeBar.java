@@ -105,11 +105,13 @@ public class LifeBar implements ShapeListener {
 	}
 
 	private int getImageWidth() {
-		return imageWidth[imageIndex];
+		//return imageWidth[imageIndex];
+		return 193;
 	}
 	
 	private int getImageHeight() {
-		return imageHeight[imageIndex];
+		//return imageHeight[imageIndex];
+		return 42;
 	}
     /*
     public static int getMaxLife() {
