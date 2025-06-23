@@ -61,9 +61,12 @@ public class MyCharacter1 implements ShapeListener {
 	private MyDirection direction = MyDirection.STOP;
 	private MyCommand commandPolicy = MyCommand.IDLE;
 	private MyCommand command = MyCommand.IDLE;
-	public int defSpeed = 2; //default speed of the character
+	public static int defSpeed = 1; //default speed of the character
 	public int speed = defSpeed;//change this to change the speed of the character
 	
+	public static int getDefSpeed() {
+		return defSpeed;
+	}
 	public int getSpeed() {
 		return speed;
 	}

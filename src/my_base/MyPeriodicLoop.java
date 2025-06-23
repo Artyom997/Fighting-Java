@@ -55,25 +55,25 @@ public class MyPeriodicLoop extends PeriodicLoop {
 	}
 	private LifeBar updateLifeBar(int i) {
 		GameCanvas canvas = Game.UI().canvas();
-	if(i==1){
-		char1HP = content.life(1);
-		return char1HP;
-	}
-	else{
-		char2HP = content.life(2);
-		return char2HP;
-	}
+		if(i==1){
+			char1HP = content.life(1);
+			return char1HP;
+		}
+		else{
+			char2HP = content.life(2);
+			return char2HP;
+		}
 	}
 
 	private PointsBar updatePointsBar(int i) {
-	if(i==1){
-		char1P = content.points(1);
-		return char1P;
-	}
-	else{
-		char2P = content.points(2);
-		return char2P;
-	}
+		if(i==1){
+			char1P = content.points(1);
+			return char1P;
+		}
+		else{
+			char2P = content.points(2);
+			return char2P;
+		}
 	}
 
 }

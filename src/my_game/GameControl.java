@@ -67,14 +67,14 @@ public class GameControl {
 			char1.setSpeed(0);
 			char2.setSpeed(0);
 			if(char1.getDirectionPolicy() == MyDirection.LEFT){
-				char1.setSpeed(2);}
+				char1.setSpeed(MyCharacter1.getDefSpeed());}
 			else if (char2.getDirectionPolicy() == MyDirection.RIGHT){
-				char2.setSpeed(2);}
+				char2.setSpeed(MyCharacter1.getDefSpeed());}
 			else{char1.setSpeed(0);
 			char2.setSpeed(0);}
     	}
-		else{char1.setSpeed(2);
-			char2.setSpeed(2);}
+		else{char1.setSpeed(MyCharacter1.getDefSpeed());
+			char2.setSpeed(MyCharacter1.getDefSpeed());}
 	}
 	
 	public static void borderControl(MyCharacter1 char1, MyCharacter1 char2) {
@@ -82,20 +82,21 @@ public class GameControl {
 		{
 			char1.setSpeed(0);
 			if(char1.getDirectionPolicy() == MyDirection.RIGHT) {
-				char1.setSpeed(2);
+				char1.setSpeed(MyCharacter1.getDefSpeed());
 			}
 		}
 		if (char2.getLocation(2).getX()>=rightBorder)
 		{
 			char2.setSpeed(0);
 			if(char2.getDirectionPolicy() == MyDirection.LEFT) {
-				char2.setSpeed(2);
+				char2.setSpeed(MyCharacter1.getDefSpeed());
 			}
 		
 		}
 	}
 	public static void hitRegistration(MyCharacter1 char1, MyCharacter1 char2,LifeBar char1HP, LifeBar char2HP, PointsBar char1P, PointsBar char2P) {
 		long now = System.currentTimeMillis();
+		javax.swing.SwingUtilities.invokeLater(() -> {
 		if (InVicinity(char1.getLocation(1), char2.getLocation(2))) {
 			if (char1.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char2.getCommandPolicy() == MyCharacter1.MyCommand.BLOCK) {
@@ -132,11 +133,12 @@ public class GameControl {
 			if (now - lastHitTimeChar2 >= HIT_COOLDOWN_MS) {
 				System.out.println("Char2: Punch hit!");
 				//char2P.increasePoints(100);
-				//char1HP.decreaseLife(1);
-				//char1HP.changeImage();
+				char1HP.decreaseLife(1);
+				char1HP.changeImage();
 				lastHitTimeChar2 = now;
 				}
 			}
 		}
+	});
 	}
 }

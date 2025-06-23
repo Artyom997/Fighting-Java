@@ -25,7 +25,7 @@ public class LifeBar implements ShapeListener {
     public LifeBar(int index) {
         this.imageID = "Life" + index;
       //  this.maxLife = maxLife;
-        this.currentLife =5;
+        this.currentLife = 5;
         if (index == 1) {setLocation(1, new ScreenPoint(100, 50));}
 		else setLocation(2, new ScreenPoint(700, 50));
         
@@ -53,7 +53,7 @@ public class LifeBar implements ShapeListener {
 			this.location2 = location;
 	}
 	
-    	public void addToCanvas(int index) {
+	public void addToCanvas(int index) {
 		GameCanvas canvas = Game.UI().canvas();
 		Image image;
 		if (index == 1) {
