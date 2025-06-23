@@ -35,8 +35,8 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		//if(content.control()!=null){
 		char1 = updateCharacter1();
 		char2 = updateCharacter2();
-		//char1HP = updateLifeBar(1);
-		//char2HP = updateLifeBar(2);
+		char1HP = updateLifeBar(1);
+		char2HP = updateLifeBar(2);
 		char1P = updatePointsBar(1);
 		char2P = updatePointsBar(2);
 		content.control().gameStep(char1, char2,char1HP, char2HP, char1P, char2P);

@@ -111,9 +111,8 @@ public class GameControl {
 				if (now - lastHitTimeChar1 >= HIT_COOLDOWN_MS) {
 				System.out.println("Char1: Punch hit!");
 				//char1P.increasePoints(100);
-				//char2HP.decreaseLife(1);
-				//char2HP.setImageChanging(true);
-				//char2HP.changeImage();
+				char2HP.decreaseLife(1);
+				char2HP.changeImage();
 				lastHitTimeChar1 = now;
 				}
 			}
