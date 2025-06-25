@@ -20,7 +20,7 @@ public class ChangeButton extends GameButton{
 		//content.polygon().exitEditMode();
 		//content.polygon().getVisualPolygon().rotate(45);
 		//TODO
-		content.changeCharacter();//David+Artyom
+		//content.changeCharacter();//David+Artyom
 		//Change your character properties by calling the appropriate method of
 		//MyContent
 		

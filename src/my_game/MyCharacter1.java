@@ -75,28 +75,51 @@ public class MyCharacter1 implements ShapeListener {
 		this.speed = speed;
 	}
 	
-	private String[] images = {
+	private String[] images;
+	private String[] ryuImages = {
 		//left character images
-		"resources/gifs/ryu-standing.gif", //img index 0
-		"resources/gifs/ryu-block.gif",//img index 1
-		"resources/gifs/ryu-mp.gif",//img index 2
-		"resources/gifs/ryu-mk.gif",//img index 3
-		"resources/gifs/ryu-hurricane-ts.gif",//img index 4
-		"resources/gifs/ryu-walkf.gif",//img index 5
-		"resources/gifs/ryu-walkb.gif",//img index 6
+		"resources/gifs/Ryu/ryu-standing.gif", //img index 0
+		"resources/gifs/Ryu/ryu-block.gif",//img index 1
+		"resources/gifs/Ryu/ryu-mp.gif",//img index 2
+		"resources/gifs/Ryu/ryu-timeout.gif",//img index 3
+		"resources/gifs/Ryu/ryu-walkf.gif",//img index 4
+		"resources/gifs/Ryu/ryu-walkb.gif",//img index 5
 		//right character images
-		"resources/gifs/RYU_GIF_FLIP/ryu-standing-rotate.gif",//img index 7
-		"resources/gifs/RYU_GIF_FLIP/ryu-block-rotate.gif",//img index 8
-		"resources/gifs/RYU_GIF_FLIP/ryu-mp-rotate.gif",//img index 9
-		"resources/gifs/RYU_GIF_FLIP/ryu-mk-rotate.gif",//img index 10
-		"resources/gifs/RYU_GIF_FLIP/ryu-hurricane-ts-rotate.gif",//img index 11
-		"resources/gifs/RYU_GIF_FLIP/ryu-walkf-rotate.gif",//img index 12
-		"resources/gifs/RYU_GIF_FLIP/ryu-walkb-rotate.gif"//img index 13
-
+		"resources/gifs/Ryu/Rotate/ryu-standing-rotate.gif",//img index 6
+		"resources/gifs/Ryu/Rotate/ryu-block-rotate.gif",//img index 7
+		"resources/gifs/Ryu/Rotate/ryu-mp-rotate.gif",//img index 8
+		"resources/gifs/Ryu/Rotate/ryu-timeout-rotate.gif",//img index 9
+		"resources/gifs/Ryu/Rotate/ryu-walkf-rotate.gif",//img index 10
+		"resources/gifs/Ryu/Rotate/ryu-walkb-rotate.gif"//img index 11
+	};
+		private String[] kenImages = {
+		//left character images
+		"resources/gifs/Ken/ken-mp.gif", //img index 0
+		"resources/gifs/Ken/ken-block2.gif",//img index 1
+		"resources/gifs/Ken/ken-hado-ts.gif",//img index 2
+		"resources/gifs/Ken/ken-taunts2.gif",//img index 3
+		"resources/gifs/Ken/ken-walkf.gif",//img index 4
+		"resources/gifs/Ken/ken-walkb.gif",//img index 5
+		//right character images
+		"resources/gifs/Ken/Rotate/ken-mp-rotate.gif",//img index 6
+		"resources/gifs/Ken/Rotate/ken-block2-rotate.gif",//img index 7
+		"resources/gifs/Ken/Rotate/ken-hado-ts-rotate.gif",//img index 8
+		"resources/gifs/Ken/Rotate/ken-taunts2-rotate.gif",//img index 9
+		"resources/gifs/Ken/Rotate/ken-walkf-rotate.gif",//img index 10
+		"resources/gifs/Ken/Rotate/ken-walkb-rotate.gif"//img index 11
 	};
 
-	private final int[] imageWidth = {78, 78, 127, 154, 159, 112, 112, 78, 78, 127, 154, 159, 112, 112};//The following two arrays hold the widths and heights of the different images.
-	private final int[] imageHeight = {111, 106, 105, 108, 140, 113, 113, 111, 106, 105, 108, 140, 113, 113};//need to be changed according to each gif
+	private int[] imageWidth;
+	private int[] imageHeight;
+	
+	
+	private final int[] ryuWidth = {78, 78, 127, 75, 112, 112, 78, 78, 127, 75, 112, 112};//The following two arrays hold the widths and heights of the different images.
+	private final int[] ryuHeight = {111, 106, 105, 109, 113, 113, 111, 106, 105, 109, 113, 113};//need to be changed according to each gif
+	private final int[] kenWidth = {78, 78, 136, 115, 112, 111, 78, 78, 136, 115, 112, 111};//The following two arrays hold the widths and heights of the different images.
+	private final int[] kenHeight = {111, 105, 104, 112, 113, 113, 111, 105, 104, 112, 113, 113};//need to be changed according to each gif
+	{images = ryuImages; //default images
+	imageWidth = ryuWidth; //default image width
+	imageHeight = ryuHeight;} //default image height	
 	//private int locationIndex = 0;
 	private int imageIndex = 0;
 	private String imageID = "Ryu";
@@ -114,8 +137,19 @@ public class MyCharacter1 implements ShapeListener {
 			this.imageIndex = 0;
 		}
 		else{
-		setLocation(2, new ScreenPoint(500, 330));
+		setLocation(2, new ScreenPoint(800, 330));
 		this.imageIndex = 7;}
+	}
+	public void setVisuals(String choice) {
+		if (choice.equals("Ryu")) {
+			this.images = ryuImages;
+			this.imageWidth = ryuWidth;
+			this.imageHeight = ryuHeight;
+		} else if (choice.equals("Ken")) {
+			this.images = kenImages;
+			this.imageWidth = kenWidth;
+			this.imageHeight = kenHeight;
+		}
 	}
 	public void addToCanvas(int index) {
 		GameCanvas canvas = Game.UI().canvas();
@@ -214,17 +248,17 @@ public class MyCharacter1 implements ShapeListener {
 			location.y = desired.y;
 			if (index == 1) {
 				switch (direction) {
-					case LEFT: imageIndex = 6; break;
-					case RIGHT:  imageIndex = 5; break;
+					case LEFT: imageIndex = 5; break;
+					case RIGHT:  imageIndex = 4; break;
 					case STOP: imageIndex = 0; break;
 				}
 				//System.out.println("Char1 move: " + direction);
 			}
 			else if(index == 2) {
 				 switch (direction) {
-					case LEFT: imageIndex = 12; break;
-					case RIGHT:  imageIndex = 13; break;
-					case STOP: imageIndex = 7; break;
+					case LEFT: imageIndex = 10; break;
+					case RIGHT:  imageIndex = 11; break;
+					case STOP: imageIndex = 6; break;
 				}
 			}
 			
@@ -245,19 +279,17 @@ public class MyCharacter1 implements ShapeListener {
 		if (index == 1) {
 			switch (command) {
 				case PUNCH: this.imageIndex = 2; break;
-				case KICK:  this.imageIndex = 3; break;
 				case BLOCK: this.imageIndex = 1; break;
-				case WIN:   this.imageIndex = 4; break;
+				case WIN:   this.imageIndex = 3; break;//taunt animation
 				case IDLE:  this.imageIndex = 0; break;
 			}
 		}
 		else if(index == 2) {
 			switch (command) {
-				case PUNCH: this.imageIndex = 9; break;
-				case KICK:  this.imageIndex = 10; break;
-				case BLOCK: this.imageIndex = 8; break;
-				case WIN:   this.imageIndex = 11; break;
-				case IDLE:  this.imageIndex = 7; break;
+				case PUNCH: this.imageIndex = 8; break;
+				case BLOCK: this.imageIndex = 7; break;
+				case WIN:   this.imageIndex = 9; break;//taunt animation
+				case IDLE:  this.imageIndex = 6; break;
 			}
 		}
 		Game.UI().canvas().changeImage(imageID, getImageName(), getImageWidth(), getImageHeight());

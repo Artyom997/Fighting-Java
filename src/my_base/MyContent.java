@@ -18,13 +18,13 @@ public class MyContent extends GameContent{
 	private Pokimon pokimon;
 	private MyPolygon myPolygon;
 	private GameControl control;
-	private MyCharacter1 ryu;
-	private MyCharacter1 ermak;
+	private MyCharacter1 char1;
+	private MyCharacter1 char2;
 	private LifeBar char1HP;
 	private LifeBar char2HP;
 	private PointsBar char1P;
 	private PointsBar char2P;
-	 private String selectedCharacter;
+	private String selectedCharacter;
 	
 	
 	//TODO
@@ -37,8 +37,8 @@ public class MyContent extends GameContent{
 		//Create an instance of your character and set its properties with
 		//initial values
 
-		ryu = new MyCharacter1(1);
-		ermak = new MyCharacter1(2);
+		char1 = new MyCharacter1(1);
+		char2 = new MyCharacter1(2);
 		//char1HP = new LifeBar(LifeBar.getMaxLife());
 		//char2HP = new LifeBar(LifeBar.getMaxLife());
 		char1HP = new LifeBar(1);
@@ -56,7 +56,7 @@ public class MyContent extends GameContent{
 
 		//ryu.initImage();
 	}	
-	
+	 
 	public Pokimon pokimon() {
 		return pokimon;
 	}
@@ -65,10 +65,10 @@ public class MyContent extends GameContent{
 	}
 	public MyCharacter1 character(int index) {
 		if (index == 1) {
-			return ryu;
+			return char1;
 		} 
 		else
-			return ermak;		
+			return char2;		
 	}
 
 	public LifeBar life(int index) {
@@ -86,7 +86,7 @@ public class MyContent extends GameContent{
 		else
 			return char2P;		
 	}
-
+/* 
 	public void addCharacter(int index) { 
 		ryu.addToCanvas(index);
 	}
@@ -96,13 +96,14 @@ public class MyContent extends GameContent{
 		//Create an instance of your character and set its properties with
 		//new values.
 	}
+		
 	public void changeLocation() { //David+Artyom
 		//TODO
 		//ryu.changeLocation();
 		//Create an instance of your character and set its properties with
 		//new values.
 	}
-
+*/
 	
     public void setSelectedCharacter(String name) {
         this.selectedCharacter = name;

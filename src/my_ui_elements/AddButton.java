@@ -21,7 +21,7 @@ public class AddButton extends GameButton{
 		
 		MyContent content = (MyContent) Game.Content();
 		//TODO
-		content.addCharacter(1);//Change to something generic
+		//content.addCharacter(1);//Change to something generic
 		//Add your character to your game content
 
 	}

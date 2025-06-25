@@ -18,19 +18,22 @@ public class GameUI {
 		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(width, height);
+		
 		canvas = new GameCanvas();
 		dashboard = new GameDashboard();
 		split.setTopComponent(canvas);
 		split.setBottomComponent(dashboard);
-
+		
 		/* 
 		 * -----------------------------------------------------------------------------
 		 * Change this number for a different ratio between the canvas and the dashboard
 		 * -----------------------------------------------------------------------------
 		 */
 		split.setDividerLocation(height*72/100);
+	
 		
 		frame.getContentPane().add(split);
+		frame.setLocationRelativeTo(null);
 	}
 	
 	public GameCanvas canvas() {

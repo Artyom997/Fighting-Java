@@ -44,7 +44,7 @@ public class MyGame extends Game {
 		char1HP.addToCanvas(1);
 		char2HP.addToCanvas(2);
 	}
-	
+	/* 
 	@Override
 	protected void initDashboard() {
 		super.initDashboard();
@@ -72,7 +72,7 @@ public class MyGame extends Game {
 
 		//dashboard.addUIElement(new GetNameButton("btnName", "Get Name", 130, 40, 800, 100));
 	}
-	
+	*/
 	@Override
 	public void setGameContent(GameContent content) {
 		// Call the Game superclass to set its content 
