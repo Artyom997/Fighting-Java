@@ -13,4 +13,8 @@ public class ScreenPoint {
 	{
 		return x;
 	}
+		public int getY()
+	{
+		return y;
+	}
 }

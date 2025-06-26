@@ -2,6 +2,7 @@ package my_base;
 
 
 import my_game.Pokimon;
+import ui_elements.ScreenPoint;
 //import ui_elements.ScreenPoint;
 import base.Game;
 import base.GameCanvas;
@@ -13,6 +14,7 @@ import my_game.GameControl;
 import my_base.InVicinity;
 import my_base.LifeBar;
 import my_base.PointsBar;
+import my_base .TimerBar;
 
 public class MyContent extends GameContent{
 	private Pokimon pokimon;
@@ -25,6 +27,8 @@ public class MyContent extends GameContent{
 	private PointsBar char1P;
 	private PointsBar char2P;
 	private String selectedCharacter;
+	private TimerBar timerBar;
+	private ScreenPoint timeScreenPoint;
 	
 	
 	//TODO
@@ -43,8 +47,10 @@ public class MyContent extends GameContent{
 		//char2HP = new LifeBar(LifeBar.getMaxLife());
 		char1HP = new LifeBar(1);
 		char2HP = new LifeBar(2);
-		//char1P = new PointsBar(1);
-		//char2P = new PointsBar(2);
+		char1P = new PointsBar(1);
+		char2P = new PointsBar(2);
+		timeScreenPoint = new ScreenPoint(400, 30);
+		timerBar = new TimerBar();
 		control = new GameControl();
 		//check if the life bars are initialized correctly
 		/*	
@@ -78,7 +84,9 @@ public class MyContent extends GameContent{
 		else		
 	return char2HP;
 	}
-
+ public TimerBar timerBar() {
+		return timerBar;
+	}
 	public PointsBar points(int index) {
 		if (index == 1) {
 			return char1P;

@@ -38,11 +38,19 @@ public class MyGame extends Game {
 		MyCharacter1 char2 = content.character(2);
 		LifeBar char1HP = content.life(1);
 		LifeBar char2HP = content.life(2);
+		PointsBar char1P = content.points(1);
+		PointsBar char2P = content.points(2);
+		TimerBar timerBar = content.timerBar();
+		timerBar.start();
+
 		//Pokimon pokimon = content.pokimon();
 		char1.addToCanvas(1);
 		char2.addToCanvas(2);
 		char1HP.addToCanvas(1);
 		char2HP.addToCanvas(2);
+		char1P.addToCanvas();
+		char2P.addToCanvas();	
+		timerBar.addToCanvas();
 	}
 	/* 
 	@Override

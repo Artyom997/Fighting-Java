@@ -55,6 +55,7 @@ public class LifeBar implements ShapeListener {
 	
 	public void addToCanvas(int index) {
 		GameCanvas canvas = Game.UI().canvas();
+		canvas.hideShape(getImageID());
 		Image image;
 		if (index == 1) {
 			image = new Image(getImageID(), getImageName(), getImageWidth(),getImageHeight(), location1.x, location1.y);
@@ -63,6 +64,7 @@ public class LifeBar implements ShapeListener {
 		
 		image.setShapeListener(this);
 		image.setzOrder(3);
+		image.setDraggable(false);
 		canvas.addShape(image);
 	}
 

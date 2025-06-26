@@ -2,8 +2,10 @@ package my_game;
 import my_base.LifeBar;
 import my_base.MyContent;
 import my_base.PointsBar;
+import my_base.TimerBar;
 import my_game.MyCharacter1.MyDirection;
 import ui_elements.ScreenPoint;
+import my_base.TimerBar;
 
 public class GameControl {
 	MyContent content = new MyContent();
@@ -14,6 +16,7 @@ public class GameControl {
     LifeBar char2HP = content.life(2);
 	PointsBar char1P = content.points(1);
     PointsBar char2P = content.points(2);
+	TimerBar timerBar = content.timerBar();
 	static int leftBorder = 50;
 	static int rightBorder = 850;
 	long time = System.currentTimeMillis();
@@ -24,17 +27,25 @@ public class GameControl {
 	public GameControl() {
 	}
 
-	public void gameStep(MyCharacter1 char1, MyCharacter1 char2, LifeBar char1HP, LifeBar char2HP, PointsBar char1P, PointsBar char2P) {
+	public void gameStep(MyCharacter1 char1, MyCharacter1 char2, LifeBar char1HP, LifeBar char2HP, PointsBar char1P, PointsBar char2P, TimerBar timerBar) {
 		distanceControl(char1,char2);
 		borderControl(char1, char2);
 		moveUpdate(char1, char2);
 		commandUpdate(char1, char2);
 		hitRegistration(char1, char2, char1HP, char2HP, char1P, char2P);
+		char1P.addToCanvas();
+		char2P.addToCanvas();
+		timerBar.addToCanvas();	
 		checkGameOver();
 	}
 
 	public void checkGameOver() {
-
+   /*if (timerBar.getSeconds() == 0 || char1HP.getCurrentLife() == 0 || char2HP.getCurrentLife() == 0) {
+        if (timerBar.getSeconds() == 0) {
+            // Timer reached 0, victory based on points
+			//move to next frame   
+        }
+			*/
 	}
 	public static void moveUpdate(MyCharacter1 char1, MyCharacter1 char2) {
 		javax.swing.SwingUtilities.invokeLater(() -> {
@@ -102,7 +113,7 @@ public class GameControl {
 			 char2.getCommandPolicy() == MyCharacter1.MyCommand.BLOCK) {
 				if (now - lastHitTimeChar1 >= HIT_COOLDOWN_MS) {
 				System.out.println("Char1: Punch blocked!");
-				//char2P.increasePoints(50);
+				char2P.addPoints(70);
 				lastHitTimeChar1 = now;
 				}
 			} 
@@ -111,7 +122,7 @@ public class GameControl {
 			 char2.getCommandPolicy() != MyCharacter1.MyCommand.BLOCK) {
 				if (now - lastHitTimeChar1 >= HIT_COOLDOWN_MS) {
 				System.out.println("Char1: Punch hit!");
-				//char1P.increasePoints(100);
+				char1P.addPoints(100);
 				char2HP.decreaseLife(1);
 				char2HP.changeImage();
 				lastHitTimeChar1 = now;
@@ -123,7 +134,7 @@ public class GameControl {
 			 char1.getCommandPolicy() == MyCharacter1.MyCommand.BLOCK) {
 				if (now - lastHitTimeChar2 >= HIT_COOLDOWN_MS) {
 				System.out.println("Char2: Punch blocked!");
-				//char1P.increasePoints(50);
+				char1P.addPoints(70);
 				lastHitTimeChar2 = now;
 				}
 			}
@@ -132,7 +143,7 @@ public class GameControl {
 			 char1.getCommandPolicy() != MyCharacter1.MyCommand.BLOCK) {
 			if (now - lastHitTimeChar2 >= HIT_COOLDOWN_MS) {
 				System.out.println("Char2: Punch hit!");
-				//char2P.increasePoints(100);
+				char2P.addPoints(100);
 				char1HP.decreaseLife(1);
 				char1HP.changeImage();
 				lastHitTimeChar2 = now;

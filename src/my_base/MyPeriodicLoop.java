@@ -11,6 +11,7 @@ import my_base.MyContent;
 import my_base.InVicinity;
 import my_base.LifeBar;
 import my_base.PointsBar;
+import my_base.TimerBar;
 
 public class MyPeriodicLoop extends PeriodicLoop {
 	private MyContent content;
@@ -20,6 +21,7 @@ public class MyPeriodicLoop extends PeriodicLoop {
 	LifeBar char2HP;
 	PointsBar char1P;
 	PointsBar char2P;
+	TimerBar timerBar;
 
 
 
@@ -39,7 +41,8 @@ public class MyPeriodicLoop extends PeriodicLoop {
 		char2HP = updateLifeBar(2);
 		char1P = updatePointsBar(1);
 		char2P = updatePointsBar(2);
-		content.control().gameStep(char1, char2,char1HP, char2HP, char1P, char2P);
+		timerBar = updateTimerBar();
+		content.control().gameStep(char1, char2,char1HP, char2HP, char1P, char2P,timerBar);
 		//}
 		//System.out.println("check2!!!!!!!!!!!!!!!!!!!!!!!!!");
 	}
@@ -74,6 +77,11 @@ public class MyPeriodicLoop extends PeriodicLoop {
 			char2P = content.points(2);
 			return char2P;
 		}
+	}
+	private TimerBar updateTimerBar() {
+		GameCanvas canvas = Game.UI().canvas();
+		TimerBar timerBar = content.timerBar();
+		return timerBar;
 	}
 
 }
