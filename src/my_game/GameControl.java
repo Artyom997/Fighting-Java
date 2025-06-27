@@ -129,7 +129,6 @@ public class GameControl {
 				}
 			}
 
-
 			if (char2.getCommandPolicy() == MyCharacter1.MyCommand.PUNCH &&
 			 char1.getCommandPolicy() == MyCharacter1.MyCommand.BLOCK) {
 				if (now - lastHitTimeChar2 >= HIT_COOLDOWN_MS) {

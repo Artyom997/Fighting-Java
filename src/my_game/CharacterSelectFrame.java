@@ -28,82 +28,117 @@ public class CharacterSelectFrame extends JFrame {
                 g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
             }
         };
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        //Starting screen title
+        JLayeredPane layeredPane = new JLayeredPane();
+        layeredPane.setPreferredSize(new Dimension(1080, 720)); // Adjust size as needed
+
         JLabel titleLabel = new JLabel("Welcome to our Fighting Game!");
-        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 28));
         titleLabel.setForeground(Color.BLACK);
-        titleLabel.setBorder(BorderFactory.createEmptyBorder(40, 0, 40, 0));
-        mainPanel.add(titleLabel);
+        titleLabel.setBackground(new Color(255, 255, 255, 128));
+        titleLabel.setOpaque(true);
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        titleLabel.setBounds(320, 10, 450, 60);
+        layeredPane.add(titleLabel);
         
-        // Title for first character label
-        JLabel title1Label = new JLabel("Player one, please select your character:");
-        title1Label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        title1Label.setFont(new Font("Arial", Font.BOLD, 28));
-        title1Label.setForeground(Color.BLACK);
-        title1Label.setBorder(BorderFactory.createEmptyBorder(40, 0, 10, 0));
-        mainPanel.add(title1Label);
-        
-        // Character1 buttons panel
-        JPanel buttonPanel1 = new JPanel();
-        buttonPanel1.setOpaque(false);
-        buttonPanel1.setLayout(new FlowLayout(FlowLayout.CENTER, 40, 10));
-        //mainPanel.setBackground(new Color(30, 30, 60));
-        //mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        setLayout(new java.awt.FlowLayout());
+        JLabel char1Label = new JLabel("Player one, please select your character:");
+        char1Label.setFont(new Font("Arial", Font.BOLD, 28));
+        char1Label.setForeground(Color.BLACK);
+        char1Label.setBackground(new Color(255, 255, 255, 128));
+        char1Label.setOpaque(true);
+        char1Label.setHorizontalAlignment(SwingConstants.CENTER);
+        char1Label.setBounds(250, 150, 590, 60);
+        layeredPane.add(char1Label);
+
         JButton kenBtn1 = new JButton("Ken");
-        JButton ryuBtn1 = new JButton("Ryu");
         kenBtn1.setFont(new Font("Arial", Font.BOLD, 24));
+        kenBtn1.setBounds(330, 260, 160, 60);
+
+        JButton ryuBtn1 = new JButton("Ryu");
         ryuBtn1.setFont(new Font("Arial", Font.BOLD, 24));
-        buttonPanel1.add(kenBtn1);
-        buttonPanel1.add(ryuBtn1);
-        mainPanel.add(buttonPanel1);
+        ryuBtn1.setBounds(590, 260, 160, 60);
 
-        // Title for second character label
-        JLabel title2Label = new JLabel("Player two, please select your character:");
-        title2Label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        title2Label.setFont(new Font("Arial", Font.BOLD, 28));
-        title2Label.setForeground(Color.BLACK);
-        title2Label.setBorder(BorderFactory.createEmptyBorder(40, 0, 40, 0));
-        mainPanel.add(title2Label);
-        // Character2 buttons panel
-        JPanel buttonPanel2 = new JPanel();
-        buttonPanel2.setOpaque(false);
-        buttonPanel2.setLayout(new FlowLayout(FlowLayout.CENTER, 40, 10));
-        //mainPanel.setBackground(new Color(30, 30, 60));
-        //mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
-        setLayout(new java.awt.FlowLayout());
+        JLabel char2Label = new JLabel("Player two, please select your character:");
+        char2Label.setFont(new Font("Arial", Font.BOLD, 28));
+        char2Label.setForeground(Color.BLACK);
+        char2Label.setBackground(new Color(255, 255, 255, 128));
+        char2Label.setOpaque(true);
+        char2Label.setHorizontalAlignment(SwingConstants.CENTER);
+        char2Label.setBounds(250, 350, 590, 60);
+        layeredPane.add(char2Label);
+
         JButton kenBtn2 = new JButton("Ken");
-        JButton ryuBtn2 = new JButton("Ryu");
         kenBtn2.setFont(new Font("Arial", Font.BOLD, 24));
-        ryuBtn2.setFont(new Font("Arial", Font.BOLD, 24));
-        buttonPanel2.add(kenBtn2);
-        buttonPanel2.add(ryuBtn2);
-        mainPanel.add(buttonPanel2);
+        kenBtn2.setBounds(330, 460, 160, 60);
 
+        JButton ryuBtn2 = new JButton("Ryu");
+        ryuBtn2.setFont(new Font("Arial", Font.BOLD, 24));
+        ryuBtn2.setBounds(590, 460, 160, 60);
+
+        JLabel overlayLabel1 = new JLabel("Character 1 has been selected!");
+        overlayLabel1.setFont(new Font("Arial", Font.BOLD, 28));
+        overlayLabel1.setForeground(Color.BLACK);
+        overlayLabel1.setOpaque(true);
+        overlayLabel1.setBackground(Color.WHITE);
+        overlayLabel1.setHorizontalAlignment(SwingConstants.CENTER);
+        overlayLabel1.setVerticalAlignment(SwingConstants.CENTER);
+        overlayLabel1.setBounds(330, 260, 420, 60);
+        overlayLabel1.setVisible(false); // Hide initially
+
+        JLabel overlayLabel2 = new JLabel("Character 2 has been selected!");
+        overlayLabel2.setFont(new Font("Arial", Font.BOLD, 28));
+        overlayLabel2.setForeground(Color.BLACK);
+        overlayLabel2.setOpaque(true);
+        overlayLabel2.setBackground(Color.WHITE);
+        overlayLabel2.setHorizontalAlignment(SwingConstants.CENTER);
+        overlayLabel2.setVerticalAlignment(SwingConstants.CENTER);
+        overlayLabel2.setBounds(330, 460, 420, 60);
+        overlayLabel2.setVisible(false); // Hide initially
+
+        JButton startGameBtn = new JButton("Let's Start the Fight!");
+        startGameBtn.setFont(new Font("Arial", Font.BOLD, 24));
+        startGameBtn.setBounds(400, 580, 290, 60);
+
+        layeredPane.add(kenBtn1, JLayeredPane.DEFAULT_LAYER);
+        layeredPane.add(ryuBtn1, JLayeredPane.DEFAULT_LAYER);
+        layeredPane.add(kenBtn2, JLayeredPane.DEFAULT_LAYER);
+        layeredPane.add(ryuBtn2, JLayeredPane.DEFAULT_LAYER);
+        layeredPane.add(startGameBtn, JLayeredPane.DEFAULT_LAYER);
+        layeredPane.add(overlayLabel1, JLayeredPane.PALETTE_LAYER);
+        layeredPane.add(overlayLabel2, JLayeredPane.PALETTE_LAYER);
+        mainPanel.add(layeredPane);
+        // Add the layeredPane to your button panel instead of the button directly
 
         kenBtn1.addActionListener(e -> {
-            listener.onCharacterSelected("Ken");
-            dispose();
-        });
+            //listener.onCharacterSelected("Ken");
+            overlayLabel1.setVisible(true);
+            kenBtn1.setEnabled(false);
+            //dispose();
+        }); 
         ryuBtn1.addActionListener(e -> {
-            listener.onCharacterSelected("Ryu");
-            dispose();
+            //listener.onCharacterSelected("Ryu");
+            overlayLabel1.setVisible(true);
+            ryuBtn1.setEnabled(false);
+            //dispose();
         });
         kenBtn2.addActionListener(e -> {
-            listener.onCharacterSelected("Ken");
-            dispose();
+            //listener.onCharacterSelected("Ken");
+            overlayLabel2.setVisible(true);
+            //dispose();
         });
         ryuBtn2.addActionListener(e -> {
+            //listener.onCharacterSelected("Ryu");
+            overlayLabel2.setVisible(true);
+            //dispose();
+        });
+        startGameBtn.addActionListener(e -> {
             listener.onCharacterSelected("Ryu");
+            //overlayLabel2.setVisible(true);
             dispose();
         });
-
-
 
 
         setContentPane(mainPanel);
         setLocationRelativeTo(null); // Center on screen
     }
+    
 }
