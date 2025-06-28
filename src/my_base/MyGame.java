@@ -14,6 +14,7 @@ import my_ui_elements.EndButton;
 import my_ui_elements.MusicButton;
 import my_ui_elements.NewGameButton;
 import my_game.CharacterSelectFrame;
+import my_game.GameOverFrame;
 import my_game.GameControl;
 import my_game.MyCharacter1;
 import my_base.LifeBar;
@@ -95,28 +96,49 @@ public class MyGame extends Game {
 	public MyContent getContent() {
 		return this.content;
 	}
-	
+	public interface EndGameListener {
+    	void onGameEnd(int endGameCondition);
+	}
+	private static EndGameListener endGameListener;
+
+	public void setEndGameListener(EndGameListener listener) {
+		this.endGameListener = listener;
+	}
+
+	public static void notifyGameEnd(int endGameCondition) {
+		if (endGameListener != null) {
+			endGameListener.onGameEnd(endGameCondition);
+		}
+	}
 	public static void main(String[] args) {
 		// Create a new game UI, named "My Game" with a size of 1000 x 1000 pixels
 		        javax.swing.SwingUtilities.invokeLater(() -> {
-            	CharacterSelectFrame selectFrame = new CharacterSelectFrame(characterNames -> {
-                // After character is selected, set up the game
-                MyGame game = new MyGame();
-                MyContent content = new MyContent();
-                content.setSelectedCharacter1(characterNames[0]); // Store the selection
-				content.setSelectedCharacter2(characterNames[1]); // Store the selection
-
-                game.setGameContent(content);
-
-                MyPeriodicLoop periodicLoop = new MyPeriodicLoop();
-                periodicLoop.setContent(game.getContent());
-                game.setPeriodicLoop(periodicLoop);
-                game.setMouseHandler(new MyMouseHandler());
-                game.setKeyboardListener(new MyKeyboardListener());
-                game.initGame();
-            });
-            selectFrame.setVisible(true);
+					MyGame game = new MyGame();
+					CharacterSelectFrame selectFrame = new CharacterSelectFrame(characterNames -> {
+						// After character is selected, set up the game
+						//MyGame game = new MyGame();
+						MyContent content = new MyContent();
+						content.setSelectedCharacter1(characterNames[0]); // Store the selection
+						content.setSelectedCharacter2(characterNames[1]); // Store the selection
+						game.setGameContent(content);
+						MyPeriodicLoop periodicLoop = new MyPeriodicLoop();
+						periodicLoop.setContent(game.getContent());
+						game.setPeriodicLoop(periodicLoop);
+						game.setMouseHandler(new MyMouseHandler());
+						game.setKeyboardListener(new MyKeyboardListener());
+						game.initGame();
+            		});
+            		selectFrame.setVisible(true);
+					game.setEndGameListener(endGameCondition -> {
+					// Show the game over frame with the end game condition
+						GameOverFrame gameOverFrame = new GameOverFrame(() -> {
+							// Handle new game selection
+							selectFrame.setVisible(true);
+							//gameOverFrame.dispose(); // Close the game over frame
+						});
+						gameOverFrame.setVisible(true);
         });
+		});
 		/* 
 		MyGame game = new MyGame();	
 		game.setGameContent(new MyContent());

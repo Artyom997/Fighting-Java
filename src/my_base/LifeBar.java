@@ -69,7 +69,7 @@ public class LifeBar implements ShapeListener {
 	}
 
     public int getCurrentLife() {
-        System.out.println("get"+ currentLife);
+        //System.out.println("get"+ currentLife);
         return currentLife;
     }
 
@@ -90,9 +90,9 @@ public class LifeBar implements ShapeListener {
 	}
     
 	public void changeImage() {
-        System.out.println("changeImage called, current index: " + this.imageIndex);
+        //System.out.println("changeImage called, current index: " + this.imageIndex);
 		this.imageIndex ++;
-        System.out.println("changeImage called, current index: " + this.imageIndex);
+        //System.out.println("changeImage called, current index: " + this.imageIndex);
 		if (this.imageIndex >= this.images.length) {
 			this.imageIndex = 0;
 		}

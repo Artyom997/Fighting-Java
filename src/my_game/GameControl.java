@@ -1,6 +1,8 @@
 package my_game;
+import base.Game;
 import my_base.LifeBar;
 import my_base.MyContent;
+import my_base.MyGame;
 import my_base.PointsBar;
 import my_base.TimerBar;
 import my_game.MyCharacter1.MyDirection;
@@ -23,6 +25,8 @@ public class GameControl {
 	private static long lastHitTimeChar1 = 0; // last time char1 hit char2
 	private static long lastHitTimeChar2 = 0; // last time char2 hit char1
 	private static final long HIT_COOLDOWN_MS = 700; // time period for a next hit to be registered, 0.5 seconds
+	static int gameOverCondition;
+	public int flag = 0; // flag to check if game is over, 1 means game is not over, 0 means game is over
 
 	public GameControl() {
 	}
@@ -36,16 +40,25 @@ public class GameControl {
 		char1P.addToCanvas();
 		char2P.addToCanvas();
 		timerBar.addToCanvas();	
-		checkGameOver();
+		checkGameOver(timerBar, char1HP, char2HP);
 	}
 
-	public void checkGameOver() {
-   /*if (timerBar.getSeconds() == 0 || char1HP.getCurrentLife() == 0 || char2HP.getCurrentLife() == 0) {
-        if (timerBar.getSeconds() == 0) {
-            // Timer reached 0, victory based on points
+	public void checkGameOver(TimerBar timerBar, LifeBar char1HP, LifeBar char2HP) {
+		if (timerBar.getSeconds() == 0 || char1HP.getCurrentLife() == 0 || char2HP.getCurrentLife() == 0) {
+			if (timerBar.getSeconds() == 0) {gameOverCondition = 1;}
+			else if (char1HP.getCurrentLife() == 0) {gameOverCondition = 2;}
+			else if (char2HP.getCurrentLife() == 0) {gameOverCondition = 3;}
+			else{gameOverCondition = 4;}
+			// Timer reached 0, victory based on points
 			//move to next frame   
-        }
-			*/
+    		if(flag == 0){
+				MyGame.notifyGameEnd(gameOverCondition);
+				flag++;
+			}
+		}
+	}
+	public int getGameOverCondition() {
+		return gameOverCondition;
 	}
 	public static void moveUpdate(MyCharacter1 char1, MyCharacter1 char2) {
 		javax.swing.SwingUtilities.invokeLater(() -> {
