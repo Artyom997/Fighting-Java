@@ -97,13 +97,15 @@ public class MyGame extends Game {
 	}
 	
 	public static void main(String[] args) {
-
+		// Create a new game UI, named "My Game" with a size of 1000 x 1000 pixels
 		        javax.swing.SwingUtilities.invokeLater(() -> {
-            	CharacterSelectFrame selectFrame = new CharacterSelectFrame(characterName -> {
+            	CharacterSelectFrame selectFrame = new CharacterSelectFrame(characterNames -> {
                 // After character is selected, set up the game
                 MyGame game = new MyGame();
                 MyContent content = new MyContent();
-                content.setSelectedCharacter(characterName); // Store the selection
+                content.setSelectedCharacter1(characterNames[0]); // Store the selection
+				content.setSelectedCharacter2(characterNames[1]); // Store the selection
+
                 game.setGameContent(content);
 
                 MyPeriodicLoop periodicLoop = new MyPeriodicLoop();

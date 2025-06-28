@@ -9,7 +9,7 @@ public class CharacterSelectFrame extends JFrame {
     private static String char2;
 
     public interface CharacterSelectListener {
-        void onCharacterSelected(String characterName);
+        void onCharacterSelected(String[] characterNames);
             
     }
 
@@ -110,28 +110,33 @@ public class CharacterSelectFrame extends JFrame {
 
         kenBtn1.addActionListener(e -> {
             //listener.onCharacterSelected("Ken");
+            char1 = "Ken";
             overlayLabel1.setVisible(true);
             kenBtn1.setEnabled(false);
             //dispose();
         }); 
         ryuBtn1.addActionListener(e -> {
             //listener.onCharacterSelected("Ryu");
+            char1 = "Ryu";
             overlayLabel1.setVisible(true);
             ryuBtn1.setEnabled(false);
             //dispose();
         });
         kenBtn2.addActionListener(e -> {
             //listener.onCharacterSelected("Ken");
+            char2 = "Ken";
             overlayLabel2.setVisible(true);
             //dispose();
         });
         ryuBtn2.addActionListener(e -> {
             //listener.onCharacterSelected("Ryu");
+            char2 = "Ryu";
             overlayLabel2.setVisible(true);
             //dispose();
         });
         startGameBtn.addActionListener(e -> {
-            listener.onCharacterSelected("Ryu");
+            String[] characterNames = {char1, char2};
+            listener.onCharacterSelected(characterNames);
             //overlayLabel2.setVisible(true);
             dispose();
         });

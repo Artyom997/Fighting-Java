@@ -26,7 +26,8 @@ public class MyContent extends GameContent{
 	private LifeBar char2HP;
 	private PointsBar char1P;
 	private PointsBar char2P;
-	private String selectedCharacter;
+	private String selectedCharacter1;
+	private String selectedCharacter2;
 	private TimerBar timerBar;
 	private ScreenPoint timeScreenPoint;
 	
@@ -42,7 +43,9 @@ public class MyContent extends GameContent{
 		//initial values
 
 		char1 = new MyCharacter1(1);
+		char1.setVisuals(selectedCharacter1);
 		char2 = new MyCharacter1(2);
+		char2.setVisuals(selectedCharacter2);
 		//char1HP = new LifeBar(LifeBar.getMaxLife());
 		//char2HP = new LifeBar(LifeBar.getMaxLife());
 		char1HP = new LifeBar(1);
@@ -113,12 +116,18 @@ public class MyContent extends GameContent{
 	}
 */
 	
-    public void setSelectedCharacter(String name) {
-        this.selectedCharacter = name;
+    public void setSelectedCharacter1(String name) {
+		this.selectedCharacter1 = name;
+    }
+	public void setSelectedCharacter2(String name) {
+        this.selectedCharacter2 = name;
     }
 
-    public String getSelectedCharacter() {
-        return selectedCharacter;
+    public String getSelectedCharacter1() {
+        return selectedCharacter1;
+    }
+	public String getSelectedCharacter2() {
+        return selectedCharacter1;
     }
 	//TODO
 	//create a changeCharacter method and change inside all the properties you like.
