@@ -45,18 +45,23 @@ public class GameControl {
 
 	public void checkGameOver(TimerBar timerBar, LifeBar char1HP, LifeBar char2HP) {
 		if (timerBar.getSeconds() == 0 || char1HP.getCurrentLife() == 0 || char2HP.getCurrentLife() == 0) {
-			if (timerBar.getSeconds() == 0) {gameOverCondition = 1;}
-			else if (char1HP.getCurrentLife() == 0) {gameOverCondition = 2;}
-			else if (char2HP.getCurrentLife() == 0) {gameOverCondition = 3;}
-			else{gameOverCondition = 4;}
-			// Timer reached 0, victory based on points
-			//move to next frame   
-    		if(flag == 0){
+			if (timerBar.getSeconds() == 0) {
+				if(char1HP.getCurrentLife()>char1HP.getCurrentLife())
+					{gameOverCondition = 1;}
+				else if (char1HP.getCurrentLife() < char2HP.getCurrentLife())
+					{gameOverCondition = 2;}
+			}
+			else if (char1HP.getCurrentLife() == 0&&timerBar.getSeconds()>0) {gameOverCondition = 3;}
+			else if (char2HP.getCurrentLife() == 0&&timerBar.getSeconds()>0) {gameOverCondition = 4;}
+			else{gameOverCondition = 5;}
+				// Timer reached 0, victory based on points
+				//move to next frame   
+			if(flag == 0){
 				MyGame.notifyGameEnd(gameOverCondition);
 				flag++;
 			}
 		}
-	}
+	}	
 	public int getGameOverCondition() {
 		return gameOverCondition;
 	}

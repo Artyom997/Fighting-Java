@@ -23,7 +23,6 @@ public class CharacterSelectFrame extends JFrame {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                // Optionally, draw a background image here
                 Image bg = Toolkit.getDefaultToolkit().getImage("resources/BackGround.jpg");
                 g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
             }
@@ -109,35 +108,34 @@ public class CharacterSelectFrame extends JFrame {
         // Add the layeredPane to your button panel instead of the button directly
 
         kenBtn1.addActionListener(e -> {
-            //listener.onCharacterSelected("Ken");
             char1 = "Ken";
             overlayLabel1.setVisible(true);
             kenBtn1.setEnabled(false);
-            //dispose();
         }); 
         ryuBtn1.addActionListener(e -> {
-            //listener.onCharacterSelected("Ryu");
             char1 = "Ryu";
             overlayLabel1.setVisible(true);
             ryuBtn1.setEnabled(false);
-            //dispose();
         });
         kenBtn2.addActionListener(e -> {
-            //listener.onCharacterSelected("Ken");
             char2 = "Ken";
             overlayLabel2.setVisible(true);
-            //dispose();
+            kenBtn2.setEnabled(false);
         });
         ryuBtn2.addActionListener(e -> {
-            //listener.onCharacterSelected("Ryu");
             char2 = "Ryu";
             overlayLabel2.setVisible(true);
-            //dispose();
+            ryuBtn2.setEnabled(false);
         });
         startGameBtn.addActionListener(e -> {
             String[] characterNames = {char1, char2};
             listener.onCharacterSelected(characterNames);
-            //overlayLabel2.setVisible(true);
+            overlayLabel1.setVisible(false);
+            overlayLabel2.setVisible(false);
+            ryuBtn1.setEnabled(true);
+            kenBtn1.setEnabled(true);
+            ryuBtn2.setEnabled(true);
+            kenBtn2.setEnabled(true);
             dispose();
         });
 
