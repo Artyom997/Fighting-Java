@@ -20,8 +20,6 @@ public class MyCharacter1 implements ShapeListener {
 	public enum MyDirection{
 		RIGHT(10,0),
 		LEFT(-10,0),
-		//UP(0,-10),
-		//DOWN(0,10),
 		STOP(0,0);
 		
 		private final int xVec, yVec;
@@ -38,7 +36,7 @@ public class MyCharacter1 implements ShapeListener {
 	}
 	public enum MyCommand{
 		PUNCH("PUNCH"),
-		KICK("KICK"),
+		//KICK("KICK"),
 		BLOCK("BLOCK"),
 		WIN("WIN"),
 		IDLE("IDLE");
@@ -92,7 +90,7 @@ public class MyCharacter1 implements ShapeListener {
 		"resources/gifs/Ryu/Rotate/ryu-walkf-rotate.gif",//img index 10
 		"resources/gifs/Ryu/Rotate/ryu-walkb-rotate.gif"//img index 11
 	};
-		private String[] kenImages = {
+	private String[] kenImages = {
 		//left character images
 		"resources/gifs/Ken/ken-mp.gif", //img index 0
 		"resources/gifs/Ken/ken-block2.gif",//img index 1
@@ -120,13 +118,9 @@ public class MyCharacter1 implements ShapeListener {
 	{images = ryuImages; //default images
 	imageWidth = ryuWidth; //default image width
 	imageHeight = ryuHeight;} //default image height	
-	//private int locationIndex = 0;
 	private int imageIndex = 0;
 	private String imageID = "Ryu";
 	private boolean isMoving = true;
-	
-	//private int rotation = 0;	// In degrees
-
 
 	public MyCharacter1(int index) {
 		this.imageID = "char" + index;
@@ -163,17 +157,6 @@ public class MyCharacter1 implements ShapeListener {
 		image.setzOrder(3);
 		canvas.addShape(image);
 	}
-	/*
-	public void moveLocation(int index, int dx, int dy) {
-		if (index == 1) {
-			this.location1.x += dx;
-			this.location1.y += dy;
-		} else if (index == 2) {
-			this.location2.x += dx;
-			this.location2.y += dy;
-		}
-	}
-	*/
 
 	public void setMoving(boolean isMoving) {
 		this.isMoving = isMoving;
@@ -246,37 +229,27 @@ public class MyCharacter1 implements ShapeListener {
 			ScreenPoint desired = new ScreenPoint(location.x + speed*direction.xVec(), location.y + speed*direction.yVec());
 			location.x = desired.x;
 			location.y = desired.y;
-			if (index == 1) {
+			if(index == 1) {
 				switch (direction) {
 					case LEFT: imageIndex = 5; break;
 					case RIGHT:  imageIndex = 4; break;
 					case STOP: imageIndex = 0; break;
 				}
-				//System.out.println("Char1 move: " + direction);
 			}
 			else if(index == 2) {
-				 switch (direction) {
+				switch (direction) {
 					case LEFT: imageIndex = 10; break;
 					case RIGHT:  imageIndex = 11; break;
 					case STOP: imageIndex = 6; break;
 				}
 			}
-			
-			Game.UI().canvas().changeImage(imageID, getImageName(), getImageWidth(), getImageHeight());
-			Game.UI().canvas().moveShapeToLocation(imageID, location.x, location.y);
-			
-			//try {
-			//	ryuTable.insertRow(new String[] {PeriodicLoop.elapsedTime() + "", location.x + "", location.y +"", direction.toString()});
-			//	//Game.excelDB().commit();
-			//} catch (Exception e) {
-			//	e.printStackTrace();
-			//	System.out.println("Error inserting new line to pokimon table");			
-			//}
-		}
+		Game.UI().canvas().changeImage(imageID, getImageName(), getImageWidth(), getImageHeight());
+		Game.UI().canvas().moveShapeToLocation(imageID, location.x, location.y);
+		}	
 	}
 	public void command(int index, MyCommand command) {
 		this.command = command;
-		if (index == 1) {
+		if(index == 1) {
 			switch (command) {
 				case PUNCH: this.imageIndex = 2; break;
 				case BLOCK: this.imageIndex = 1; break;
@@ -295,8 +268,8 @@ public class MyCharacter1 implements ShapeListener {
 		Game.UI().canvas().changeImage(imageID, getImageName(), getImageWidth(), getImageHeight());
 	}
 
-	
 	//TODO
+	//Irrelevant methods but still needed for the game to run properly
 	//Add setters, getters and other methods that you need for your character
 	public void shapeMoved (String shapeID, int dx, int dy){}
     public void shapeStartDrag(String shapeID){}

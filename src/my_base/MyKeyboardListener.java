@@ -25,10 +25,11 @@ public class MyKeyboardListener extends KeyboardListener{
 			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.PUNCH);
 			  //myContent.character(1).command(MyCharacter1.MyCommand.PUNCH);
 			  break;
+			  /*
 		  case KICK:
 			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.KICK);
 			  //myContent.character(1).command(MyCharacter1.MyCommand.KICK);
-			  break;
+			  break;*/
 		  case BLOCK:
 			  myContent.character(1).setCommandPolicy(MyCharacter1.MyCommand.BLOCK);
 			  //myContent.character(1).command(MyCharacter1.MyCommand.BLOCK);
@@ -43,10 +44,12 @@ public class MyKeyboardListener extends KeyboardListener{
 			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.PUNCH);
 			  //myContent.character(2).command(MyCharacter1.MyCommand.PUNCH);
 			  break;
+			  /* 
 		  case KICK2:
 			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.KICK);
 			  //myContent.character(2).command(MyCharacter1.MyCommand.KICK);
 			  break;
+			  */
 		  case BLOCK2:
 			  myContent.character(2).setCommandPolicy(MyCharacter1.MyCommand.BLOCK);
 			  //myContent.character(2).command(MyCharacter1.MyCommand.BLOCK);
