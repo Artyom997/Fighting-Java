@@ -15,24 +15,15 @@ public class GameUI {
 	public GameUI(String gameName, int width, int height) {
 		
 		frame = new JFrame(gameName);
-		JSplitPane split = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(width, height);
-		
+
 		canvas = new GameCanvas();
-		dashboard = new GameDashboard();
-		split.setTopComponent(canvas);
-		split.setBottomComponent(dashboard);
-		
-		/* 
-		 * -----------------------------------------------------------------------------
-		 * Change this number for a different ratio between the canvas and the dashboard
-		 * -----------------------------------------------------------------------------
-		 */
-		split.setDividerLocation(height*72/100);
-	
-		
-		frame.getContentPane().add(split);
+		// dashboard = new GameDashboard(); // Remove this line
+
+		frame.getContentPane().setLayout(new java.awt.BorderLayout());
+		frame.getContentPane().add(canvas, java.awt.BorderLayout.CENTER);
+
 		frame.setLocationRelativeTo(null);
 	}
 	
@@ -40,9 +31,9 @@ public class GameUI {
 		return this.canvas;
 	}
 	
-	public GameDashboard dashboard() {
-		return this.dashboard;
-	}
+	//public GameDashboard dashboard() {
+	//	return this.dashboard;
+	//}
 	
 	public JFrame frame() {
 		return this.frame;
@@ -69,8 +60,8 @@ public class GameUI {
 		gameUI.canvas().addShape(new Image("e2", "resources/Poki.jpg", 220, 220, 300, 10));
 		
 		//Add two buttons to the game's UI dashboard
-		gameUI.dashboard().addUIElement(new GameButton("e1", "button1", 100, 60, 10, 10));
-		gameUI.dashboard().addUIElement(new GameButton("e2", "button2", 100, 60, 200, 10));
+		//gameUI.dashboard().addUIElement(new GameButton("e1", "button1", 100, 60, 10, 10));
+		//gameUI.dashboard().addUIElement(new GameButton("e2", "button2", 100, 60, 200, 10));
 		
 		//Show the game UI 
 		gameUI.setVisible(true);

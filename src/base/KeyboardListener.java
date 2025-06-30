@@ -25,10 +25,10 @@ public class KeyboardListener {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			switch (e.getKeyCode()) {
-			case KeyEvent.VK_RIGHT:
+			case KeyEvent.VK_D:
 				directionalKeyPressed(Direction.RIGHT);
 				break;
-			case KeyEvent.VK_LEFT:
+			case KeyEvent.VK_A:
 				directionalKeyPressed(Direction.LEFT);
 				break;
 			//case KeyEvent.VK_UP:
@@ -46,26 +46,26 @@ public class KeyboardListener {
 			case KeyEvent.VK_SPACE:
 				spaceKeyPressed();
 				break;
-			case KeyEvent.VK_NUMPAD1:
+			case KeyEvent.VK_G:
 				commandKeyPressed(Command.PUNCH);
 				break;
-			case KeyEvent.VK_NUMPAD2:
-				commandKeyPressed(Command.KICK);
-				break;
-			case KeyEvent.VK_NUMPAD3:
+			//case KeyEvent.VK_NUMPAD2:
+			//	commandKeyPressed(Command.KICK);
+			//	break;
+			case KeyEvent.VK_H:
 				commandKeyPressed(Command.BLOCK);
 				break;
-			case KeyEvent.VK_NUMPAD0:
+			case KeyEvent.VK_J:
 				commandKeyPressed(Command.WIN);
 				break;
-			case KeyEvent.VK_NUMPAD4:
+			case KeyEvent.VK_5:
 				commandKeyPressed(Command.IDLE);
 				break;
 				//character 2 moves and commands
-			case KeyEvent.VK_D:
+			case KeyEvent.VK_RIGHT:
 				directionalKeyPressed(Direction.RIGHT2);
 				break;
-			case KeyEvent.VK_A:
+			case KeyEvent.VK_LEFT:
 				directionalKeyPressed(Direction.LEFT2);
 				break;
 			//case KeyEvent.VK_W:
@@ -74,16 +74,16 @@ public class KeyboardListener {
 			//case KeyEvent.VK_X:
 			//	directionalKeyPressed(Direction.DOWN2);
 			//	break;
-			case KeyEvent.VK_1:
+			case KeyEvent.VK_NUMPAD1:
 				commandKeyPressed(Command.PUNCH2);
 				break;
-			case KeyEvent.VK_2:
-				commandKeyPressed(Command.KICK2);
-				break;
-			case KeyEvent.VK_3:
+			//case KeyEvent.VK_2:
+			//	commandKeyPressed(Command.KICK2);
+			//	break;
+			case KeyEvent.VK_NUMPAD3:
 				commandKeyPressed(Command.BLOCK2);
 				break;
-			case KeyEvent.VK_4:
+			case KeyEvent.VK_NUMPAD0:
 				commandKeyPressed(Command.WIN2);
 				break;	
 			default:
@@ -92,10 +92,10 @@ public class KeyboardListener {
 		@Override
 		public void keyReleased(KeyEvent e) {
 			switch (e.getKeyCode()) {
-			case KeyEvent.VK_RIGHT:
+			case KeyEvent.VK_D:
 				directionalKeyReleased(Direction.RIGHT);
 				break;
-			case KeyEvent.VK_LEFT:
+			case KeyEvent.VK_A:
 				directionalKeyReleased(Direction.LEFT);
 				break;
 			//case KeyEvent.VK_UP:
@@ -104,40 +104,40 @@ public class KeyboardListener {
 			//case KeyEvent.VK_DOWN:
 			//	directionalKeyReleased(Direction.DOWN);
 			//	break;
-			case KeyEvent.VK_NUMPAD1:
+			case KeyEvent.VK_G:
 				commandKeyReleased(Command.PUNCH);
 				break;
-			case KeyEvent.VK_NUMPAD2:
-				commandKeyReleased(Command.KICK);
-				break;
-			case KeyEvent.VK_NUMPAD3:
+			//case KeyEvent.VK_NUMPAD2:
+			//	commandKeyReleased(Command.KICK);
+			//	break;
+			case KeyEvent.VK_H:
 				commandKeyReleased(Command.BLOCK);
 				break;
-			case KeyEvent.VK_NUMPAD0:
+			case KeyEvent.VK_J:
 				commandKeyReleased(Command.WIN);
 				break;
-			case KeyEvent.VK_NUMPAD4:
+			case KeyEvent.VK_5:
 				commandKeyReleased(Command.IDLE);
 				break;
-			case KeyEvent.VK_D:
+			case KeyEvent.VK_RIGHT:
 				directionalKeyReleased(Direction.RIGHT2);
 				break;
-			case KeyEvent.VK_A:
+			case KeyEvent.VK_LEFT:
 				directionalKeyReleased(Direction.LEFT2);
 				break;
-			case KeyEvent.VK_1:
+			case KeyEvent.VK_NUMPAD1:
 				commandKeyReleased(Command.PUNCH2);
 				break;
-			case KeyEvent.VK_2:
-				commandKeyReleased(Command.KICK2);
-				break;
-			case KeyEvent.VK_3:
+			//case KeyEvent.VK_2:
+			//	commandKeyReleased(Command.KICK2);
+			//	break;
+			case KeyEvent.VK_NUMPAD3:
 				commandKeyReleased(Command.BLOCK2);
 				break;
-			case KeyEvent.VK_4:
+			case KeyEvent.VK_NUMPAD0:
 				commandKeyReleased(Command.WIN2);
 				break;
-			case KeyEvent.VK_S:
+			case KeyEvent.VK_NUMPAD5:
 				commandKeyReleased(Command.IDLE2);
 				break;
 			default:

@@ -38,6 +38,15 @@ public class CharacterSelectFrame extends JFrame {
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         titleLabel.setBounds(320, 10, 450, 60);
         layeredPane.add(titleLabel);
+
+        JLabel readmeLabel = new JLabel("<html>Read the README file for<br> instructions on how to play!</html>");
+        readmeLabel.setFont(new Font("Arial", Font.BOLD, 14));
+        readmeLabel.setForeground(Color.BLACK);
+        readmeLabel.setBackground(new Color(255, 255, 255, 128));
+        readmeLabel.setOpaque(true);
+        readmeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        readmeLabel.setBounds(10, 10, 250, 60);
+        layeredPane.add(readmeLabel);
         
         JLabel char1Label = new JLabel("Player one, please select your character:");
         char1Label.setFont(new Font("Arial", Font.BOLD, 28));

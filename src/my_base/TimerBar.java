@@ -21,7 +21,7 @@ public class TimerBar {
     private static final int FONT_SIZE = 20;
 
     public TimerBar() {
-        this.seconds = 30;
+        this.seconds = 60;
         this.timerShape = null;
     }
 

@@ -128,11 +128,11 @@ public class MyCharacter1 implements ShapeListener {
 		ryuTable = Game.excelDB().createTableFromExcel("ryuMoves");
 		ryuTable.deleteAllRows();
 		if (index == 1) {
-			setLocation(1, new ScreenPoint(200, 330));
+			setLocation(1, new ScreenPoint(200, 450));
 			this.imageIndex = 0;
 		}
 		else{
-		setLocation(2, new ScreenPoint(800, 330));
+		setLocation(2, new ScreenPoint(800, 450));
 		this.imageIndex = 7;}
 	}
 	public void setVisuals(String choice) {
