@@ -7,18 +7,8 @@ import my_base.PointsBar;
 import my_base.TimerBar;
 import my_game.MyCharacter1.MyDirection;
 import ui_elements.ScreenPoint;
-import my_base.TimerBar;
 
 public class GameControl {
-	static MyContent content = new MyContent();
-	//private static InVicinity vicinity = new InVicinity();	
-    static MyCharacter1 char1 = content.character(1);
-    static MyCharacter1 char2 = content.character(2);
-	LifeBar char1HP = content.life(1);
-    LifeBar char2HP = content.life(2);
-	PointsBar char1P = content.points(1);
-    PointsBar char2P = content.points(2);
-	TimerBar timerBar = content.timerBar();
 	static int leftBorder = 50;
 	static int rightBorder = 850;
 	long time = System.currentTimeMillis();
@@ -40,29 +30,61 @@ public class GameControl {
 		char1P.addToCanvas();
 		char2P.addToCanvas();
 		timerBar.addToCanvas();	
-		checkGameOver(timerBar, char1HP, char2HP);
+		checkGameOver(timerBar, char1HP, char2HP, char1, char2);
 	}
 
-	public void checkGameOver(TimerBar timerBar, LifeBar char1HP, LifeBar char2HP) {
+	public void checkGameOver(TimerBar timerBar, LifeBar char1HP, LifeBar char2HP, MyCharacter1 char1, MyCharacter1 char2) {
 		if (timerBar.getSeconds() == 0 || char1HP.getCurrentLife() == 0 || char2HP.getCurrentLife() == 0) {
 			if (timerBar.getSeconds() == 0) {
-				if(char1HP.getCurrentLife()>char1HP.getCurrentLife())
-					{gameOverCondition = 1;}
-				else if (char1HP.getCurrentLife() < char2HP.getCurrentLife())
-					{gameOverCondition = 2;}
+				if(char1HP.getCurrentLife() > char2HP.getCurrentLife()){
+					switch(char1.getCharName()) {
+						case "Ryu":
+							gameOverCondition = 1; // Player one as RYU wins by points
+							break;
+						case "Ken":
+							gameOverCondition = 2; // Player one as KEN wins by points
+							break;
+					}
+				}
+				else if (char1HP.getCurrentLife() < char2HP.getCurrentLife()){
+					switch(char2.getCharName()) {
+						case "Ryu":
+							gameOverCondition = 3; // Player two as RYU wins by points
+							break;
+						case "Ken":
+							gameOverCondition = 4; // Player two as KEN wins by points
+							break;
+						}
+				}
 			}
-			else if (char1HP.getCurrentLife() == 0&&timerBar.getSeconds()>0) {gameOverCondition = 3;}
-			else if (char2HP.getCurrentLife() == 0&&timerBar.getSeconds()>0) {gameOverCondition = 4;}
-			else{gameOverCondition = 5;}
-				// Timer reached 0, victory based on points
-				//move to next frame   
+			else if (char1HP.getCurrentLife() == 0&&timerBar.getSeconds()>0) {
+				switch(char2.getCharName()) {
+					case "Ryu":
+						gameOverCondition = 5; // Player two as RYU wins by KO
+						break;
+					case "Ken":
+						gameOverCondition = 6; // Player two as KEN wins by KO
+						break;
+					}
+				}
+			else if (char2HP.getCurrentLife() == 0&&timerBar.getSeconds()>0) {
+				switch(char1.getCharName()) {
+					case "Ryu":
+						gameOverCondition = 7; // Player one as RYU wins by KO
+						break;
+					case "Ken":
+						gameOverCondition = 8; // Player one as KEN wins by KO
+						break;
+				}
+			}
+			else{gameOverCondition = 9;}  //A draw, no one wins
 			if(flag == 0){
 				MyGame.notifyGameEnd(gameOverCondition);
 				flag++;
 			}
 		}
 	}	
-	public int getGameOverCondition() {
+	public static int getGameOverCondition() {
 		return gameOverCondition;
 	}
 	public static void moveUpdate(MyCharacter1 char1, MyCharacter1 char2) {

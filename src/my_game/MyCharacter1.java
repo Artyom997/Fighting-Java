@@ -140,12 +140,12 @@ public class MyCharacter1 implements ShapeListener {
 			this.images = ryuImages;
 			this.imageWidth = ryuWidth;
 			this.imageHeight = ryuHeight;
-			this.charName = "RYU";
+			this.charName = "Ryu";
 		} else if (choice.equals("Ken")) {
 			this.images = kenImages;
 			this.imageWidth = kenWidth;
 			this.imageHeight = kenHeight;
-			this.charName = "KEN";
+			this.charName = "Ken";
 		}
 	}
 	public String getCharName() {
