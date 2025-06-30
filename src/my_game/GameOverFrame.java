@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameOverFrame extends JFrame {
-    private static int gameOverCondition = my_game.GameControl.gameOverCondition;
+    //private static int gameOverCondition = my_game.GameControl.gameOverCondition;
     private String bgImagePath;
     
     public interface NewGameListener {
@@ -17,6 +17,7 @@ public class GameOverFrame extends JFrame {
         setTitle("GameOver Screen");
         setSize(1080, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        int gameOverCondition = my_game.GameControl.gameOverCondition;
         switch (gameOverCondition) {
             case 1:
                 //Player one as RYU wins by points!
@@ -76,9 +77,10 @@ public class GameOverFrame extends JFrame {
         layeredPane.add(newGameBtn);
         mainPanel.add(layeredPane);
         
-
         newGameBtn.addActionListener(e -> {
             listener.onNewGameSelected();
+            bgImagePath = null;
+            my_game.GameControl.gameOverCondition = 0; // Reset game over condition
             dispose();
         });
 

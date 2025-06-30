@@ -112,7 +112,7 @@ public class MyGame extends Game {
 		}
 	}
 	public static void main(String[] args) {
-		// Create a new game UI, named "My Game" with a size of 1000 x 1000 pixels
+		// Create a new game UI, named "My Game" with a size of 1080 x 720 pixels
 		        javax.swing.SwingUtilities.invokeLater(() -> {
 					MyGame game = new MyGame();
 					CharacterSelectFrame selectFrame = new CharacterSelectFrame(characterNames -> {
@@ -127,7 +127,7 @@ public class MyGame extends Game {
 						game.setMouseHandler(new MyMouseHandler());
 						game.setKeyboardListener(new MyKeyboardListener());
 						game.initGame();
-						Game.UI().frame().setVisible(true); // Show the main game frame
+						Game.gameUI.frame().setVisible(true); // Show the main game frame
             		});
             		selectFrame.setVisible(true);
 					game.setEndGameListener(endGameCondition -> {
@@ -135,10 +135,10 @@ public class MyGame extends Game {
 						Game.UI().frame().setVisible(false);
 					// Show the game over frame with the end game condition
 						GameOverFrame gameOverFrame = new GameOverFrame(() -> {
-							Game.UI().frame().setVisible(false); // Show the main game frame again
+							game.getContent().restartGame();
+							Game.UI().frame().setVisible(false);
 							// Handle new game selection
 							selectFrame.setVisible(true);
-							//gameOverFrame.dispose(); // Close the game over frame
 						});
 						gameOverFrame.setVisible(true);
         });

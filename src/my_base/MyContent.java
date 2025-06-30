@@ -65,7 +65,7 @@ public class MyContent extends GameContent{
 
 		//ryu.initImage();
 	}	
-	 
+	
 	public Pokimon pokimon() {
 		return pokimon;
 	}
@@ -87,7 +87,7 @@ public class MyContent extends GameContent{
 		else		
 	return char2HP;
 	}
- public TimerBar timerBar() {
+ 	public TimerBar timerBar() {
 		return timerBar;
 	}
 	public PointsBar points(int index) {
@@ -129,6 +129,12 @@ public class MyContent extends GameContent{
 	public String getSelectedCharacter2() {
         return selectedCharacter1;
     }
+	public void restartGame() {
+		// Reinitialize the content
+		initContent();
+		GameUI gameUI = Game.UI();
+		gameUI.frame().dispose(); // Clear the canvas for a fresh start
+	}
 	//TODO
 	//create a changeCharacter method and change inside all the properties you like.
 }
