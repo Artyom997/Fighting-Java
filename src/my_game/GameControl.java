@@ -10,10 +10,10 @@ import ui_elements.ScreenPoint;
 import my_base.TimerBar;
 
 public class GameControl {
-	MyContent content = new MyContent();
+	static MyContent content = new MyContent();
 	//private static InVicinity vicinity = new InVicinity();	
-    MyCharacter1 char1 = content.character(1);
-    MyCharacter1 char2 = content.character(2);
+    static MyCharacter1 char1 = content.character(1);
+    static MyCharacter1 char2 = content.character(2);
 	LifeBar char1HP = content.life(1);
     LifeBar char2HP = content.life(2);
 	PointsBar char1P = content.points(1);

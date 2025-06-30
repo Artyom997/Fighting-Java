@@ -120,6 +120,7 @@ public class MyCharacter1 implements ShapeListener {
 	imageHeight = ryuHeight;} //default image height	
 	private int imageIndex = 0;
 	private String imageID = "Ryu";
+	private String charName; //character name
 	private boolean isMoving = true;
 
 	public MyCharacter1(int index) {
@@ -139,11 +140,16 @@ public class MyCharacter1 implements ShapeListener {
 			this.images = ryuImages;
 			this.imageWidth = ryuWidth;
 			this.imageHeight = ryuHeight;
+			this.charName = "RYU";
 		} else if (choice.equals("Ken")) {
 			this.images = kenImages;
 			this.imageWidth = kenWidth;
 			this.imageHeight = kenHeight;
+			this.charName = "KEN";
 		}
+	}
+	public String getCharName() {
+		return charName;
 	}
 	public void addToCanvas(int index) {
 		GameCanvas canvas = Game.UI().canvas();
