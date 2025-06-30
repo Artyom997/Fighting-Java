@@ -56,6 +56,7 @@ public class GameControl {
 							break;
 						}
 				}
+				else{gameOverCondition = 9;}  //A draw, no one wins
 			}
 			else if (char1HP.getCurrentLife() == 0&&timerBar.getSeconds()>0) {
 				switch(char2.getCharName()) {
@@ -77,7 +78,6 @@ public class GameControl {
 						break;
 				}
 			}
-			else{gameOverCondition = 9;}  //A draw, no one wins
 			if(flag == 0){
 				MyGame.notifyGameEnd(gameOverCondition);
 				flag++;

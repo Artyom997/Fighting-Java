@@ -1,6 +1,7 @@
 package my_base;
 
 import java.awt.Color;
+import java.awt.*;
 
 import base.Game;
 import base.GameCanvas;
@@ -116,7 +117,6 @@ public class MyGame extends Game {
 					MyGame game = new MyGame();
 					CharacterSelectFrame selectFrame = new CharacterSelectFrame(characterNames -> {
 						// After character is selected, set up the game
-						//MyGame game = new MyGame();
 						MyContent content = new MyContent();
 						content.setSelectedCharacter1(characterNames[0]); // Store the selection
 						content.setSelectedCharacter2(characterNames[1]); // Store the selection
@@ -127,11 +127,15 @@ public class MyGame extends Game {
 						game.setMouseHandler(new MyMouseHandler());
 						game.setKeyboardListener(new MyKeyboardListener());
 						game.initGame();
+						Game.UI().frame().setVisible(true); // Show the main game frame
             		});
             		selectFrame.setVisible(true);
 					game.setEndGameListener(endGameCondition -> {
+						selectFrame.setVisible(false);
+						Game.UI().frame().setVisible(false);
 					// Show the game over frame with the end game condition
 						GameOverFrame gameOverFrame = new GameOverFrame(() -> {
+							Game.UI().frame().setVisible(false); // Show the main game frame again
 							// Handle new game selection
 							selectFrame.setVisible(true);
 							//gameOverFrame.dispose(); // Close the game over frame

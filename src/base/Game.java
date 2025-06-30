@@ -48,7 +48,7 @@ public abstract class Game {
 	}
 	
 	public void initUI() {
-		gameUI = new GameUI("My Game", 1000, 720);//changed from 1000,1000 to 1200, 720
+		gameUI = new GameUI("My Game", 1080, 720);//changed from 1000,1000 to 1200, 720
 		initCanvas();
 		initDashboard();
 		gameUI.setFocusable(true);

@@ -5,7 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GameOverFrame extends JFrame {
-    private static String endText;
     private static int gameOverCondition = my_game.GameControl.gameOverCondition;
     private String bgImagePath;
     
@@ -44,17 +43,14 @@ public class GameOverFrame extends JFrame {
                 bgImagePath = "resources/Player2_KEN_Won_KO.png";
                 break;
             case 7:
-                endText = "Player one as RYU wins by KO!";
                 //Player one as RYU wins by points!
                 bgImagePath = "resources/Player1_RYU_Won_KO.png";
                 break;
             case 8:
-                endText = "Player one wins by KO!";
                 //Player one as KEN wins by points!
                 bgImagePath = "resources/Player1_KEN_Won_KO.png";
                 break;
             case 9:
-                endText = "It's a draw!";
                 //IT'S A DRAW!
                 bgImagePath = "resources/DRAW_PICTURE.png";
                 break;
